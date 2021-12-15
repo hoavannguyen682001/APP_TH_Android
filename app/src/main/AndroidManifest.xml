@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_TH_Android">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activity.Profile_SinhVien_Activity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
