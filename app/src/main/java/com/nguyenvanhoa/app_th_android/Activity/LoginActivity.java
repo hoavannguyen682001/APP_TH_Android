@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Profile_SinhVien_Activity.class));
+                startActivity(new Intent(getApplicationContext(), DangKyDeTai_Activity.class));
             }
         });
     }

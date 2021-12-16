@@ -1,4 +1,4 @@
-package com.nguyenvanhoa.app_th_android;
+package com.nguyenvanhoa.app_th_android.Model;
 
 public class Giaovien {
     private String ten_gv;

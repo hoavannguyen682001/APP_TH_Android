@@ -1,4 +1,4 @@
-package com.nguyenvanhoa.app_th_android;
+package com.nguyenvanhoa.app_th_android.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,7 +16,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.nguyenvanhoa.app_th_android.Fragment.Fragment_dangki;
 import com.nguyenvanhoa.app_th_android.Fragment.Fragment_giaovien;
 import com.nguyenvanhoa.app_th_android.Fragment.Fragment_sinhvien;
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import com.nguyenvanhoa.app_th_android.R;
+
+public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout dr_layout;
     private Toolbar tool_bar;
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_admin);
 
         Anhxa();
         // setSupportActionBar(tool_bar);
