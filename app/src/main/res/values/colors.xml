@@ -14,5 +14,8 @@
 
     <color name="darkTextColor">#020000</color>
     <color name="whiteTextColor">#fff</color>
+    <color name="nen_admin">#efefea</color>
+    <color name="menu_nav">#078366</color>
+
 
 </resources>

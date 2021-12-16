@@ -3,10 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2755208333333333" />
         <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/activity_login.xml" value="0.23867753623188406" />
         <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/activity_main.xml" value="0.23867753623188406" />
         <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/activity_profile.xml" value="0.13333333333333333" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/activity_profile_sinhvien.xml" value="0.259375" />
         <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/activity_register.xml" value="0.23867753623188406" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/fragment_dangki.xml" value="0.259375" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/fragment_giaovien.xml" value="0.259375" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/fragment_sinhvien.xml" value="0.259375" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/header_navigation_layout.xml" value="0.259375" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/layout/row_listview_giaovien.xml" value="0.259375" />
+        <entry key="..\:/NAM_3/PhanThiThanhThao_121TLTTD02/BAITAP_TONGKET/APP_TH_Android/app/src/main/res/menu/navigaton_menu.xml" value="0.259375" />
       </map>
     </option>
   </component>

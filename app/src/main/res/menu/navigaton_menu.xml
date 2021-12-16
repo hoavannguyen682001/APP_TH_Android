@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_qlgv"
+            android:title="@string/ql_gv"
+            android:icon="@drawable/ic_baseline_person_24"/>
+
+        <item
+            android:id="@+id/nav_qlsv"
+            android:title="@string/ql_sv"
+            android:icon="@drawable/ic_baseline_person_24"/>
+
+
+        <item
+            android:id="@+id/nav_dangki"
+            android:title="@string/tao_tk"
+            android:icon="@drawable/ic_baseline_add_circle_outline_24"/>
+    </group>
+
+    <item android:title="@string/khac">
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:title="@string/exit"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+        </menu>
+
+    </item>
+</menu>

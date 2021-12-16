@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">APP_TH_Android</string>
+    <string name="ql_sv">Quản lý sinh viên</string>
+    <string name="ql_gv">Quản lý giảng viên</string>
+    <string name="khac">Khác</string>
+    <string name="exit">Đăng xuất</string>
+    <string name="tao_tk">Tạo tài khoản</string>
+    <string name="mo">Mở</string>
+    <string name="dong">Đóng</string>
 </resources>
