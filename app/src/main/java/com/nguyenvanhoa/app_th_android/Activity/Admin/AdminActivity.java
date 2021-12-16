@@ -1,4 +1,4 @@
-package com.nguyenvanhoa.app_th_android.Activity;
+package com.nguyenvanhoa.app_th_android.Activity.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;

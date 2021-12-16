@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nguyenvanhoa.app_th_android.Activity.GiangVien.GiangVienActivity;
+import com.nguyenvanhoa.app_th_android.Activity.SinhVien.DangKyDeTai_Activity;
+import com.nguyenvanhoa.app_th_android.Activity.SinhVien.SinhVienActivity;
 import com.nguyenvanhoa.app_th_android.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), DangKyDeTai_Activity.class));
+                startActivity(new Intent(getApplicationContext(), GiangVienActivity.class));
             }
         });
     }

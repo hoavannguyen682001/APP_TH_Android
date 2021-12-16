@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.nguyenvanhoa.app_th_android.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText edtEmail, edtPass, edtConfirmPass;
-    ImageView ivEmail, ivPass, ivConfirmPass;
+    EditText edtEmail, edtPass, edtConfirmPass,edtFullName;
+    ImageView ivEmail, ivPass, ivConfirmPass,ivFullName;
     TextView tvLogin, tvRegister, tv1;
     float v=0;
     @Override
@@ -36,10 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPass = (EditText) findViewById(R.id.edtPassword);
         edtConfirmPass = (EditText) findViewById(R.id.edtConfirmPass);
+        edtFullName = (EditText) findViewById(R.id.edtFullName);
 
         ivEmail = (ImageView) findViewById(R.id.ivEmail);
         ivPass = (ImageView) findViewById(R.id.ivPass);
         ivConfirmPass = (ImageView) findViewById(R.id.ivConfirmPass);
+        ivFullName = (ImageView) findViewById(R.id.ivFullName);
 
         tvLogin = (TextView) findViewById(R.id.tvLogin);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
@@ -54,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
         ivPass.setTranslationX(800);
         ivConfirmPass.setTranslationX(800);
         tvRegister.setTranslationX(800);
+        ivFullName.setTranslationX(800);
+        edtFullName.setTranslationX(800);
 
 
         tv1.setTranslationY(800);
@@ -68,13 +72,17 @@ public class RegisterActivity extends AppCompatActivity {
         tvRegister.setAlpha(v);
         edtConfirmPass.setAlpha(v);
         ivConfirmPass.setAlpha(v);
+        edtFullName.setAlpha(v);
+        ivFullName.setAlpha(v);
 
         edtEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         edtPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(500).start();
         edtConfirmPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        edtFullName.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(700).start();
         ivEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         ivPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(500).start();
         ivConfirmPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        ivFullName.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(700).start();
         tvRegister.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(700).start();
 
         tv1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(700).start();

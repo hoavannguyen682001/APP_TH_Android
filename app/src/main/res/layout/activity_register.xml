@@ -59,10 +59,11 @@
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
         <EditText
             android:id="@+id/edtEmail"
@@ -127,7 +128,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/border_rounded_cornwe"
-            android:hint="Mật Khẩu"
+            android:hint="Nhập lại Mật Khẩu"
             android:inputType="textPassword"
             android:maxLines="1"
             android:paddingLeft="47dp"
@@ -137,7 +138,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtPassword"
-            app:layout_constraintVertical_bias="0.057"
+            app:layout_constraintVertical_bias="0.055"
             app:layout_constraintWidth_percent="0.8" />
 
         <ImageView
@@ -150,6 +151,35 @@
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="@+id/edtConfirmPass"
             app:layout_constraintTop_toTopOf="@+id/edtConfirmPass" />
+
+        <EditText
+            android:id="@+id/edtFullName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_rounded_cornwe"
+            android:hint="Họ và tên"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingLeft="47dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtConfirmPass"
+            app:layout_constraintVertical_bias="0.055"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <ImageView
+            android:id="@+id/ivFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintBottom_toBottomOf="@+id/edtFullName"
+            app:layout_constraintEnd_toEndOf="@+id/edtFullName"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/edtFullName"
+            app:layout_constraintTop_toTopOf="@+id/edtFullName" />
 
         <TextView
             android:id="@+id/tvRegister"
@@ -164,7 +194,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtConfirmPass"
+            app:layout_constraintTop_toBottomOf="@+id/edtFullName"
             app:layout_constraintVertical_bias="0.1"
             app:layout_constraintWidth_percent="0.8" />
 

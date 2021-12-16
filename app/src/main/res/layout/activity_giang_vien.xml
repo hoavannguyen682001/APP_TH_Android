@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Admin.AdminActivity"
+    tools:context=".Activity.GiangVien.GiangVienActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -23,14 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@color/colorAccent"
-                app:title="Quản lý chung"
+                app:title="Quản Lý Danh Sách Đề Tài"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -40,8 +36,8 @@
         app:itemTextColor="@color/menu_nav"
         app:itemIconTint="@color/menu_nav"
         android:layout_gravity="start"
-        app:headerLayout="@layout/header_navigation_layout_admin"
-        app:menu="@menu/navigation_menu_admin">
+        app:headerLayout="@layout/header_navigation_layout_giangvien"
+        app:menu="@menu/navigation_menu_giangvien">
 
     </com.google.android.material.navigation.NavigationView>
 

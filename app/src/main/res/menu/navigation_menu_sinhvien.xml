@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dsdt"
+            android:title="Danh sách đề tài"
+            android:icon="@drawable/ic_list"/>
+
+        <item
+            android:id="@+id/nav_dkdt"
+            android:title="Đăng ký đề tài"
+            android:icon="@drawable/ic_dangky"/>
+
+
+        <item
+            android:id="@+id/nav_ttcn"
+            android:title="Thông tin cá nhân"
+            android:icon="@drawable/ic_baseline_person_24"/>
+    </group>
+
+    <item android:title="Khác">
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:title="@string/exit"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+        </menu>
+
+    </item>
+
+</menu>

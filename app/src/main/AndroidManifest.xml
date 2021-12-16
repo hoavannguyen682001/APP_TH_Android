@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_TH_Android">
         <activity
-            android:name=".Activity.DangKyDeTai_Activity"
+            android:name=".Activity.GiangVien.GiangVienActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.Profile_GiangVien_Activity"
+            android:name=".Activity.SinhVien.SinhVienActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.Profile_SinhVien_Activity"
+            android:name=".Activity.SinhVien.DangKyDeTai_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.GiangVien.Profile_GiangVien_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.SinhVien.Profile_SinhVien_Activity"
             android:exported="true" />
         <activity
             android:name=".Activity.RegisterActivity"
@@ -24,16 +30,22 @@
         <activity
             android:name=".Activity.LoginActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".Activity.AdminActivity"
-            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.Admin.AdminActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

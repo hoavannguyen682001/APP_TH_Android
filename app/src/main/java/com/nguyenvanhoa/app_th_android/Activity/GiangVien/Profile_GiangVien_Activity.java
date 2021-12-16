@@ -1,4 +1,4 @@
-package com.nguyenvanhoa.app_th_android.Activity;
+package com.nguyenvanhoa.app_th_android.Activity.GiangVien;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

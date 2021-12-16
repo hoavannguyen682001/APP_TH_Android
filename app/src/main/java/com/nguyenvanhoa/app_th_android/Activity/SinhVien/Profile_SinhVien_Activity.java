@@ -1,14 +1,21 @@
-package com.nguyenvanhoa.app_th_android.Activity;
+package com.nguyenvanhoa.app_th_android.Activity.SinhVien;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.nguyenvanhoa.app_th_android.R;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +27,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
     EditText edtNgaySinh;
     SimpleDateFormat simpleDateFormat;
     Calendar calendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +35,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_sinhvien);
 
         AnhXa();
+
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         iconCalendar.setOnClickListener(new View.OnClickListener() {
