@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nguyenvanhoa.app_th_android.R;
@@ -24,7 +25,8 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sinh_vien);
 
         Anhxa();
@@ -56,8 +58,8 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         switch (id){
-            case R.id.nav_dsdt:
-
+            case R.id.nav_ttdt:
+                startActivity(new Intent(getApplicationContext(), ThongTinDeTai_Activity.class));
                 break;
             case R.id.nav_dkdt:
                 startActivity(new Intent(getApplicationContext(), DangKyDeTai_Activity.class));
