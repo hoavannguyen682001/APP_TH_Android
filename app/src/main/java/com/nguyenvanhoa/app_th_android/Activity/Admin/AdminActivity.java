@@ -9,13 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.nguyenvanhoa.app_th_android.Fragment.Fragment_dangki;
-import com.nguyenvanhoa.app_th_android.Fragment.Fragment_giaovien;
-import com.nguyenvanhoa.app_th_android.Fragment.Fragment_sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
 public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,17 +23,11 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     private Toolbar tool_bar;
     private NavigationView nv_view;
 
-    private static int frag_sinhvien=0;
-    private static int frag_giaovien=1;
-    private static int frag_dangki=2;
-
-
-    private int current_frag = frag_sinhvien;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_admin);
 
         Anhxa();
@@ -45,8 +38,6 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
         nv_view.setNavigationItemSelectedListener(this);
 
-        replace_fragment(new Fragment_giaovien());
-        nv_view.getMenu().findItem(R.id.nav_qlgv).setChecked(true);
     }
 
     private void Anhxa() {
@@ -57,28 +48,23 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id= item.getItemId();
+        int id = item.getItemId();
 
-        if(id== R.id.nav_qlsv){
-            if(current_frag!= frag_sinhvien){
-                replace_fragment(new Fragment_sinhvien());
-                current_frag=frag_sinhvien;
-            }
-        }else if( id==R.id.nav_qlgv){
-            if(current_frag!= frag_giaovien){
-                replace_fragment(new Fragment_giaovien());
-                current_frag=frag_giaovien;
-            }
-        }
-        else if( id==R.id.nav_dangki){
-            if(current_frag!= frag_dangki){
-                replace_fragment(new Fragment_dangki());
-                current_frag=frag_dangki;
-            }
-        }else if( id==R.id.nav_exit){
-
+        switch (id){
+            case R.id.nav_qlgv:
+                startActivity(new Intent(getApplicationContext(), QLTKGiaoVien_Activity.class));
+                break;
+            case R.id.nav_qlsv:
+                startActivity(new Intent(getApplicationContext(), QLTKSinhVien_Activity.class));
+                break;
+            case R.id.nav_dangki:
+                startActivity(new Intent(getApplicationContext(), DangKiTaiKhoan_Activity.class));
+                break;
+            default:
+                break;
         }
         dr_layout.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
@@ -89,11 +75,5 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         }else {
             super.onBackPressed();
         }
-    }
-
-    private void replace_fragment(Fragment fragment){
-        FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame,fragment);
-        transaction.commit();
     }
 }
