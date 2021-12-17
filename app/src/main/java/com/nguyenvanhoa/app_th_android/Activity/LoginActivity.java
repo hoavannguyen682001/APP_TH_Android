@@ -44,16 +44,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AnhXa(){
-        edtEmail = (EditText) findViewById(R.id.edtEmail);
-        edtPass = (EditText) findViewById(R.id.edtPassword);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPass = findViewById(R.id.edtPassword);
 
-        ivEmail = (ImageView) findViewById(R.id.ivEmail);
-        ivPass = (ImageView) findViewById(R.id.ivPass);
+        ivEmail = findViewById(R.id.ivEmail);
+        ivPass = findViewById(R.id.ivPass);
 
-        tvLogin = (TextView) findViewById(R.id.txtLogin);
-        tvForgotPass = (TextView) findViewById(R.id.txtForgotPass);
-        tvRegister = (TextView) findViewById(R.id.txtRegister);
-        tvNewUser = (TextView) findViewById(R.id.txtNewUser);
+        tvLogin = findViewById(R.id.txtLogin);
+        tvForgotPass = findViewById(R.id.txtForgotPass);
+        tvRegister = findViewById(R.id.txtRegister);
+        tvNewUser = findViewById(R.id.txtNewUser);
 
     }
     private void Animation(){

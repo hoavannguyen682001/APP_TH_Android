@@ -35,19 +35,19 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void AnhXa(){
-        edtEmail = (EditText) findViewById(R.id.edtEmail);
-        edtPass = (EditText) findViewById(R.id.edtPassword);
-        edtConfirmPass = (EditText) findViewById(R.id.edtConfirmPass);
-        edtFullName = (EditText) findViewById(R.id.edtFullName);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPass = findViewById(R.id.edtPassword);
+        edtConfirmPass = findViewById(R.id.edtConfirmPass);
+        edtFullName = findViewById(R.id.edtFullName);
 
-        ivEmail = (ImageView) findViewById(R.id.ivEmail);
-        ivPass = (ImageView) findViewById(R.id.ivPass);
-        ivConfirmPass = (ImageView) findViewById(R.id.ivConfirmPass);
-        ivFullName = (ImageView) findViewById(R.id.ivFullName);
+        ivEmail = findViewById(R.id.ivEmail);
+        ivPass = findViewById(R.id.ivPass);
+        ivConfirmPass = findViewById(R.id.ivConfirmPass);
+        ivFullName = findViewById(R.id.ivFullName);
 
-        tvLogin = (TextView) findViewById(R.id.tvLogin);
-        tvRegister = (TextView) findViewById(R.id.tvRegister);
-        tv1 = (TextView) findViewById(R.id.txt1);
+        tvLogin = findViewById(R.id.tvLogin);
+        tvRegister = findViewById(R.id.tvRegister);
+        tv1 = findViewById(R.id.txt1);
 
     }
     private void Animation(){

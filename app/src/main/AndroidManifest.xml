@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_TH_Android">
         <activity
+            android:name=".Activity.GiangVien.DSDT_DaDK_Activity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.SinhVien.ThongTinDeTai_Activity"
             android:exported="true" />
         <activity
