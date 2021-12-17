@@ -64,7 +64,7 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
 
         switch (id){
             case R.id.dsda_duyet:
-
+                startActivity(new Intent(getApplicationContext(), DSDT_DaDK_Activity.class));
                 break;
             case R.id.dschua_duyet:
 

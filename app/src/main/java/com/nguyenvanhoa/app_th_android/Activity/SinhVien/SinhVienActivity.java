@@ -53,7 +53,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         nv_view.setNavigationItemSelectedListener(this);
 
-        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        //simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         adapter = new ThongBao_Adapter(this, R.layout.row_listview_thongbao,setArrayList());
         lvTB.setAdapter(adapter);
 

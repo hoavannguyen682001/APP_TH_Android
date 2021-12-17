@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_TH_Android">
         <activity
+            android:name=".Activity.ForgotPassword_activity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.GiangVien.DSDT_DaDK_Activity"
             android:exported="true" />
         <activity
@@ -42,26 +45,25 @@
         <activity
             android:name=".Activity.Admin.QLTKGiaoVien_Activity"
             android:exported="true" />
-
         <activity
             android:name=".Activity.LoginActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.Admin.AdminActivity"
             android:exported="true">
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
