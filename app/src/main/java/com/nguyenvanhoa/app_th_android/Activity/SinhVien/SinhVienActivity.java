@@ -32,7 +32,6 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
     private Toolbar tool_bar;
     private NavigationView nv_view;
     private TextView tvDate,tvTitle;
-
     private ListView lvTB;
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;

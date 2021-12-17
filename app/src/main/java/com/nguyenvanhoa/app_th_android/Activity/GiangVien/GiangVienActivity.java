@@ -11,16 +11,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nguyenvanhoa.app_th_android.Adapter.Giaovien_adapter;
+import com.nguyenvanhoa.app_th_android.Model.Giaovien;
 import com.nguyenvanhoa.app_th_android.R;
+
+import java.util.ArrayList;
 
 public class GiangVienActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout dr_layout;
     private Toolbar tool_bar;
     private NavigationView nv_view;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,13 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tieude"
+        android:background="@color/menu_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QUẢN LÝ TÀI KHOẢN GIÁO VIÊN"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:gravity="center"/>
 
     <ListView
         android:id="@+id/lv_giaovien"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tieude"
+        android:layout_marginTop="-26dp"
+        android:padding="16dp">
+
+
+    </ListView>
 
 </RelativeLayout>

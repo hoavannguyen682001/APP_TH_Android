@@ -2,13 +2,12 @@ package com.nguyenvanhoa.app_th_android.Model;
 
 public class Giaovien {
     private String ten_gv;
-    private String ngaysinh_gv;
-    private String Khoa;
 
-    public Giaovien(String ten_gv, String ngaysinh_gv, String khoa) {
+    private String mk_gv;
+
+    public Giaovien(String ten_gv, String mk_gv) {
         this.ten_gv = ten_gv;
-        this.ngaysinh_gv = ngaysinh_gv;
-        this.Khoa = khoa;
+        this.mk_gv = mk_gv;
     }
 
     public String getTen_gv() {
@@ -19,19 +18,11 @@ public class Giaovien {
         this.ten_gv = ten_gv;
     }
 
-    public String getNgaysinh_gv() {
-        return ngaysinh_gv;
+    public String getMk_gv() {
+        return mk_gv;
     }
 
-    public void setNgaysinh_gv(String ngaysinh_gv) {
-        this.ngaysinh_gv = ngaysinh_gv;
-    }
-
-    public String getKhoa() {
-        return Khoa;
-    }
-
-    public void setKhoa(String khoa) {
-        Khoa = khoa;
+    public void setMk_gv(String mk_gv) {
+        this.mk_gv = mk_gv;
     }
 }
