@@ -72,6 +72,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
 
+
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="0dp"
@@ -80,15 +81,18 @@
         android:hint="Email"
         android:maxLines="1"
         android:paddingLeft="17dp"
-        android:paddingRight="17dp"
+        android:drawableLeft="@drawable/ic_email"
         android:paddingTop="15dp"
+        android:paddingRight="17dp"
         android:paddingBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintVertical_bias="0.098"
         app:layout_constraintWidth_percent="0.9" />
+
 
     <EditText
         android:id="@+id/edtSDT"
@@ -98,6 +102,7 @@
         android:background="@drawable/border_rounded_cornwe"
         android:hint="Số Điện Thoại"
         android:maxLines="1"
+        android:drawableLeft="@drawable/ic_phone"
         android:paddingLeft="17dp"
         android:paddingTop="15dp"
         android:paddingRight="17dp"
@@ -109,6 +114,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.9" />
 
+
     <EditText
         android:id="@+id/edtCMDN"
         android:layout_width="0dp"
@@ -117,6 +123,7 @@
         android:background="@drawable/border_rounded_cornwe"
         android:hint="CMND/CCCD"
         android:maxLines="1"
+        android:drawableLeft="@drawable/ic_card"
         android:paddingLeft="17dp"
         android:paddingTop="15dp"
         android:paddingRight="17dp"
@@ -126,7 +133,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edtSDT"
         app:layout_constraintWidth_percent="0.9" />
 
-
     <EditText
         android:id="@+id/edtNgaySinh"
         android:layout_width="0dp"
@@ -135,6 +141,7 @@
         android:background="@drawable/border_rounded_cornwe"
         android:hint="Ngày Sinh"
         android:maxLines="1"
+        android:drawableLeft="@drawable/ic_calendar"
         android:paddingLeft="17dp"
         android:paddingTop="15dp"
         android:paddingRight="17dp"
@@ -147,16 +154,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.9" />
 
-    <ImageView
-        android:id="@+id/iconCalendar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_calendar"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintBottom_toBottomOf="@+id/edtNgaySinh"
-        app:layout_constraintEnd_toEndOf="@+id/edtNgaySinh"
-        app:layout_constraintStart_toStartOf="@+id/edtNgaySinh"
-        app:layout_constraintTop_toTopOf="@+id/edtNgaySinh" />
+
 
     <EditText
         android:id="@+id/edtKhoa"
@@ -165,6 +163,7 @@
         android:layout_marginVertical="16dp"
         android:background="@drawable/border_rounded_cornwe"
         android:hint="Khoa"
+        android:drawableLeft="@drawable/ic_khoa"
         android:maxLines="1"
         android:paddingLeft="17dp"
         android:paddingTop="15dp"
@@ -175,6 +174,8 @@
         app:layout_constraintTop_toBottomOf="@+id/edtNgaySinh"
         app:layout_constraintWidth_percent="0.9" />
 
+
+
     <TextView
         android:id="@+id/tvUpdate"
         android:layout_width="0dp"
@@ -184,6 +185,8 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Cập Nhật Thông Tin"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
