@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_TH_Android">
         <activity
+            android:name=".Activity.GiangVien.DSDT_ChuaDuyet_Activity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.ForgotPassword_activity"
             android:exported="true" />
         <activity

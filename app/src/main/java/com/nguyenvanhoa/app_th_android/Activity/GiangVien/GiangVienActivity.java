@@ -67,7 +67,7 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
                 startActivity(new Intent(getApplicationContext(), DSDT_DaDK_Activity.class));
                 break;
             case R.id.dschua_duyet:
-
+                startActivity(new Intent(getApplicationContext(), DSDT_ChuaDuyet_Activity.class));
                 break;
             case R.id.ttcanhan:
                 startActivity(new Intent(getApplicationContext(), Profile_GiangVien_Activity.class));
