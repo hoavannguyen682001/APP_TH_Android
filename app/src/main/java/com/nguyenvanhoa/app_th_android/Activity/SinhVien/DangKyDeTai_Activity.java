@@ -87,6 +87,7 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
         Long timestamp = System.currentTimeMillis();
 
         HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("id", timestamp);
         hashMap.put("uid", firebaseAuth.getUid());
         hashMap.put("tenDT", tenDT);
         hashMap.put("linhvuc", linhvuc);
