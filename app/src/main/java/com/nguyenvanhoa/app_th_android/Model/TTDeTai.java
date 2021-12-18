@@ -2,12 +2,12 @@ package com.nguyenvanhoa.app_th_android.Model;
 
 public class TTDeTai {
     private String tenDT, linhvuc, tenCNDT, tenTV, tenGV, tgThucHien, tgDK;
-    private double chiPhi;
+    private String chiPhi;
 
     public TTDeTai() {
     }
 
-    public TTDeTai(String tenDT, String linhvuc, String tenCNDT, String tenTV, String tenGV, String tgThucHien, String tgDK, double chiPhi) {
+    public TTDeTai(String tenDT, String linhvuc, String tenCNDT, String tenTV, String tenGV, String tgThucHien, String tgDK, String chiPhi) {
         this.tenDT = tenDT;
         this.linhvuc = linhvuc;
         this.tenCNDT = tenCNDT;
@@ -80,11 +80,11 @@ public class TTDeTai {
         this.tgDK = tgDK;
     }
 
-    public double getChiPhi() {
+    public String getChiPhi() {
         return chiPhi;
     }
 
-    public void setChiPhi(double chiPhi) {
+    public void setChiPhi(String chiPhi) {
         this.chiPhi = chiPhi;
     }
 }

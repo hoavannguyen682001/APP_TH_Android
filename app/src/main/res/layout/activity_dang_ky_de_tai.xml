@@ -135,7 +135,7 @@
                 app:layout_constraintWidth_percent="0.9" />
 
             <EditText
-                android:id="@+id/edtSinhVien"
+                android:id="@+id/edtTenCNDT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="sinh vien"
@@ -157,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtSinhVien"
+                app:layout_constraintTop_toBottomOf="@+id/edtTenCNDT"
                 app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintWidth_percent="0.9" />
 
@@ -177,7 +177,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/edtSinhVien2"
+                        android:id="@+id/edtSVTG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="sinh vien"
@@ -235,7 +235,7 @@
                 android:id="@+id/tv5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="6. Thời gian thực hiện đề tài: "
+                android:hint="6. Thời gian thực hiện đề tài (Tuần): "
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -251,7 +251,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="thoi gian"
-                android:inputType="date"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -279,7 +279,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Chi phi"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

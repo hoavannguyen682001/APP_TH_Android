@@ -39,7 +39,6 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
 
-    private SimpleDateFormat simpleDateFormat;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -58,7 +57,6 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         nv_view.setNavigationItemSelectedListener(this);
 
-        //simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         adapter = new ThongBao_Adapter(this, R.layout.row_listview_thongbao,setArrayList());
         lvTB.setAdapter(adapter);
 
@@ -115,9 +113,9 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         arrayList.add(new ThongBao("12/11 2021","Thông báo bảo vệ đề tài NCKH"));
         arrayList.add(new ThongBao("14/12 2021","Thông báo nghiệm thu đề tài NCKH"));
         arrayList.add(new ThongBao("17/12 2021","Danh sách đề tài được nghiệm thu"));
-        arrayList.add(new ThongBao("17/12 2021","Thông báo số"));
-        arrayList.add(new ThongBao("20/12 2021","Thông báo 5"));
-        arrayList.add(new ThongBao("22/12 2021","Thông báo 6"));
+        arrayList.add(new ThongBao("17/12 2021","Thông báo số 4"));
+        arrayList.add(new ThongBao("20/12 2021","Thông báo số 5"));
+        arrayList.add(new ThongBao("22/12 2021","Thông báo số 6"));
         arrayList.add(new ThongBao("24/12 2021","Danh sách đề tài năm 2021"));
         return arrayList;
     }
