@@ -2,14 +2,12 @@ package com.nguyenvanhoa.app_th_android.Activity.GiangVien;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nguyenvanhoa.app_th_android.Adapter.TTDeTai_Adapter;
-import com.nguyenvanhoa.app_th_android.Adapter.ThongBao_Adapter;
+import com.nguyenvanhoa.app_th_android.Adapter.TTDeTai_DaDK_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
 
@@ -19,7 +17,7 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
 
     private ListView lvTTDT;
     private ArrayList<TTDeTai> arrayList;
-    private TTDeTai_Adapter adapter;
+    private TTDeTai_DaDK_Adapter adapter;
 
     private TextView tvTenDT, tvTenCN, tvNgayDK;
 
@@ -34,7 +32,7 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
 
         setArrayList();
 
-        adapter = new TTDeTai_Adapter(this, R.layout.row_dsdt_dadk,arrayList);
+        adapter = new TTDeTai_DaDK_Adapter(this, R.layout.row_dsdt_dadk,arrayList);
         lvTTDT.setAdapter(adapter);
 
     }

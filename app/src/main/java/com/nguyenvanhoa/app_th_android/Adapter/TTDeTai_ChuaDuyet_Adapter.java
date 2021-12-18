@@ -12,15 +12,13 @@ import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
-
-public class TTDeTai_Adapter extends BaseAdapter {
-    private  Context context;
+public class TTDeTai_ChuaDuyet_Adapter extends BaseAdapter {
+    private Context context;
     private  int layout;
-    private  List<TTDeTai> deTaiList;
+    private List<TTDeTai> deTaiList;
 
-    public TTDeTai_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
+    public TTDeTai_ChuaDuyet_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
         this.context = context;
         this.layout = layout;
         this.deTaiList = deTaiList;
@@ -50,25 +48,27 @@ public class TTDeTai_Adapter extends BaseAdapter {
             view = inflater.inflate(layout,null);
 
             holder = new ViewHolder();
-            holder.tvTenDT = view.findViewById(R.id.tenDT);
-            holder.tvTenCN = view.findViewById(R.id.tenCN);
-            holder.tvNgayDK = view.findViewById(R.id.ngayDK);
-            holder.ivChiTietDT = view.findViewById(R.id.chiTietDT);
+            //Thong tin de tai chua duyet
+            holder.tvTenDT_CD = view.findViewById(R.id.tenDT_CD);
+            holder.tvTenCN_CD = view.findViewById(R.id.tenCN_CD);
+            holder.tvNgayDK_CD = view.findViewById(R.id.ngayDK_CD);
+            holder.ivChiTietDT_CD = view.findViewById(R.id.chiTietDT_CD);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
         }
 
         TTDeTai deTai = deTaiList.get(i);
-        holder.tvTenDT.setText(deTai.getTenDT());
-        holder.tvTenCN.setText(deTai.getTenCNDT());
-        holder.tvNgayDK.setText(deTai.getTgDK());
+        //Thong tin de tai chua duyet
+        holder.tvTenDT_CD.setText(deTai.getTenDT());
+        holder.tvTenCN_CD.setText(deTai.getTenCNDT());
+        holder.tvNgayDK_CD.setText(deTai.getTgDK());
 
         return view;
     }
 
     private class ViewHolder{
-        TextView tvTenDT, tvTenCN, tvNgayDK;
-        ImageView ivChiTietDT;
+        TextView tvTenDT_CD, tvTenCN_CD, tvNgayDK_CD;
+        ImageView ivChiTietDT_CD;
     }
 }

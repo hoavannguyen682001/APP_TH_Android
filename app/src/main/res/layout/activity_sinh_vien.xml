@@ -50,16 +50,16 @@
 
     </LinearLayout>
 
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/navigation_view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:itemTextColor="@color/menu_nav"-->
-<!--        app:itemIconTint="@color/menu_nav"-->
-<!--        android:layout_gravity="start"-->
-<!--        app:headerLayout="@layout/header_navigation_layout_sinhvien"-->
-<!--        app:menu="@menu/navigation_menu_sinhvien">-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemTextColor="@color/menu_nav"
+        app:itemIconTint="@color/menu_nav"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_navigation_layout_sinhvien"
+        app:menu="@menu/navigation_menu_sinhvien">
 
-<!--    </com.google.android.material.navigation.NavigationView>-->
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

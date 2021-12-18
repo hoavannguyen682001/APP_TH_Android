@@ -18,6 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.nguyenvanhoa.app_th_android.Activity.LoginActivity;
 import com.nguyenvanhoa.app_th_android.Adapter.ThongBao_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.ThongBao;
 import com.nguyenvanhoa.app_th_android.R;
@@ -37,6 +40,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
     private ThongBao_Adapter adapter;
 
     private SimpleDateFormat simpleDateFormat;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_sinh_vien);
 
         Anhxa();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nv_view.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, dr_layout,tool_bar,R.string.mo,R.string.dong);
@@ -71,6 +76,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         dr_layout= findViewById(R.id.drawer_layout);
         tool_bar= findViewById(R.id.toobar);
         nv_view= findViewById(R.id.navigation_view);
+
         tvDate = findViewById(R.id.tvDate);
         tvTitle = findViewById(R.id.tvTitle);
         lvTB = findViewById(R.id.lvTB);
@@ -89,6 +95,11 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
                 break;
             case R.id.nav_ttcn:
                 startActivity(new Intent(getApplicationContext(), Profile_SinhVien_Activity.class));
+                break;
+            case R.id.nav_exit:
+                firebaseAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
                 break;
             default:
                 break;
