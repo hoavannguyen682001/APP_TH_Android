@@ -22,7 +22,7 @@
                 android:id="@+id/toobar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/colorAccent"
+                android:background="@color/menu_nav"
                 app:title="Quản lý chung"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.AppBarLayout>
