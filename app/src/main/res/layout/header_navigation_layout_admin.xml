@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="bottom"
-    android:background="@color/colorAccent">
+    android:background="@color/menu_nav">
 
     <ImageView
         android:id="@+id/imageView3"

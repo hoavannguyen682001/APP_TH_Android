@@ -11,9 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="Danh sách đề tài đã được duyệt"
+        android:text="Danh sách đề tài đã duyệt"
         android:textAlignment="center"
         android:textColor="@color/menu_nav"
+        android:textStyle="bold"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:textColor="@color/colorAccent"
-            android:textColorHint="#83F1EB" />
+            android:textColorHint="@color/menu_nav" />
 
         <ImageView
             android:id="@+id/icTimKiem"

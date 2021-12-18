@@ -74,7 +74,7 @@
                     android:layout_height="30dp"
                     app:backgroundTint="@null"
                     android:background="@color/white"
-                    android:src="@drawable/ic_baseline_create_24"/>
+                    android:src="@drawable/ic_edit"/>
 
                 <ImageButton
                     android:layout_width="50dp"

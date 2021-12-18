@@ -16,7 +16,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/menu_nav"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <androidx.appcompat.widget.Toolbar
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="center"
-                android:background="@color/colorAccent"
+                android:background="@color/menu_nav"
                 app:title="Thông Báo   "
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.AppBarLayout>
@@ -34,8 +34,9 @@
             android:layout_height="wrap_content"
             android:background="#f1f1f1"
             android:paddingVertical="16dp"
+            android:textColor="@color/menu_nav"
             android:paddingLeft="24dp"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:text="Thông Báo Mới"/>
 
