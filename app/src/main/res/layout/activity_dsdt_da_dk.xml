@@ -46,8 +46,8 @@
             android:paddingVertical="10dp"
             android:paddingLeft="10dp"
             android:singleLine="true"
-            android:textColor="#fa71cd"
-            android:textColorHint="#DFABCE" />
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#83F1EB" />
 
         <ImageView
             android:id="@+id/icTimKiem"

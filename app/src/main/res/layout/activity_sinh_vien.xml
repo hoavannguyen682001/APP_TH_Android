@@ -16,36 +16,49 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toobar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="?actionBarSize"
+                android:layout_gravity="center"
                 android:background="@color/colorAccent"
-                app:title="Thông Báo Chung"
+                app:title="Thông Báo   "
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f1f1f1"
+            android:paddingVertical="16dp"
+            android:paddingLeft="24dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Thông Báo Mới"/>
 
         <ListView
             android:id="@+id/lvTB"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:listitem="@layout/row_listview_thongbao">
 
         </ListView>
 
     </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemTextColor="@color/menu_nav"
-        app:itemIconTint="@color/menu_nav"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_navigation_layout_sinhvien"
-        app:menu="@menu/navigation_menu_sinhvien">
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/navigation_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:itemTextColor="@color/menu_nav"-->
+<!--        app:itemIconTint="@color/menu_nav"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:headerLayout="@layout/header_navigation_layout_sinhvien"-->
+<!--        app:menu="@menu/navigation_menu_sinhvien">-->
 
-    </com.google.android.material.navigation.NavigationView>
+<!--    </com.google.android.material.navigation.NavigationView>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>
