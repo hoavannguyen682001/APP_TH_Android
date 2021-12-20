@@ -68,9 +68,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
         loadUserInfo();
-        Toast.makeText(Profile_SinhVien_Activity.this, "abcaaaaaaaaaaaaaaa =      "+firebaseAuth.getUid(), Toast.LENGTH_SHORT).show();
     }
 
     private void loadUserInfo() {

@@ -48,11 +48,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edt_tengv"
+            android:id="@+id/edt_tenGv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/border_rounded_cornwe"
-            android:hint="Tên tài khoản"
+            android:hint="Tên giáo viên"
             android:maxLines="1"
             android:paddingLeft="17dp"
             android:paddingRight="17dp"
@@ -80,7 +80,7 @@
             android:paddingBottom="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_tengv"
+            app:layout_constraintTop_toBottomOf="@+id/edt_tenGv"
             app:layout_constraintWidth_percent="0.9" />
 
         <EditText
