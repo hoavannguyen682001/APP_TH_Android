@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -97,22 +98,27 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
         hashMap.put("tgThucHien", tgThucHien);
         hashMap.put("tgDK", tgDK);
         hashMap.put("chiPhi", chiPhi);
+        hashMap.put("trangThaiDT", "Chờ duyệt");
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
-        ref.child(""+timestamp)
+        ref.child(""+firebaseAuth.getUid())
                 .setValue(hashMap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         progressDialog.dismiss();
-                        Toast.makeText(DangKyDeTai_Activity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DangKyDeTai_Activity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(getApplicationContext(), ThongTinDeTai_Activity.class);
+//                        intent.putExtra("id",timestamp);
+                        //ThongTinDeTai_Activity.id = ""+ timestamp;
+//                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(DangKyDeTai_Activity.this, "Dang ky khong thanh cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DangKyDeTai_Activity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

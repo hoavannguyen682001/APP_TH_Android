@@ -7,8 +7,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nguyenvanhoa.app_th_android.Adapter.TTDeTai_ChuaDuyet_Adapter;
-import com.nguyenvanhoa.app_th_android.Adapter.TTDeTai_DaDK_Adapter;
+import com.nguyenvanhoa.app_th_android.Adapter.DSDeTai_ChuaDuyet_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
 
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class DSDT_ChuaDuyet_Activity extends AppCompatActivity {
     private ListView lvTTDT_CD;
     private ArrayList<TTDeTai> arrayList;
-    private TTDeTai_ChuaDuyet_Adapter adapter;
+    private DSDeTai_ChuaDuyet_Adapter adapter;
 
     private TextView tvTenDT_CD, tvTenCN_CD, tvNgayDK_CD;
 
@@ -32,7 +31,7 @@ public class DSDT_ChuaDuyet_Activity extends AppCompatActivity {
 
         setArrayList();
 
-        adapter = new TTDeTai_ChuaDuyet_Adapter(this, R.layout.row_dsdt_chuaduyet,arrayList);
+        adapter = new DSDeTai_ChuaDuyet_Adapter(this, R.layout.row_dsdt_chuaduyet,arrayList);
         lvTTDT_CD.setAdapter(adapter);
 
     }

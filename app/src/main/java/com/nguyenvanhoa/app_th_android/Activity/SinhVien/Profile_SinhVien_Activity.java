@@ -24,7 +24,6 @@ import java.util.Calendar;
 
 public class Profile_SinhVien_Activity extends AppCompatActivity {
 
-    ImageView iconCalendar;
     EditText edtNgaySinh;
     SimpleDateFormat simpleDateFormat;
     Calendar calendar;
@@ -37,10 +36,9 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_sinhvien);
 
         AnhXa();
-
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        iconCalendar.setOnClickListener(new View.OnClickListener() {
+        edtNgaySinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 calendar = Calendar.getInstance();
@@ -61,7 +59,6 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
     }
 
     private void AnhXa(){
-        iconCalendar = (ImageView) findViewById(R.id.iconCalendar);
         edtNgaySinh = (EditText) findViewById(R.id.edtNgaySinh);
     }
 

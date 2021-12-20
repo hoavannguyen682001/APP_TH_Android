@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nguyenvanhoa.app_th_android.Adapter.TTDeTai_DaDK_Adapter;
+import com.nguyenvanhoa.app_th_android.Adapter.DSDeTai_DaDK_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
 
@@ -17,7 +17,7 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
 
     private ListView lvTTDT;
     private ArrayList<TTDeTai> arrayList;
-    private TTDeTai_DaDK_Adapter adapter;
+    private DSDeTai_DaDK_Adapter adapter;
 
     private TextView tvTenDT, tvTenCN, tvNgayDK;
 
@@ -32,7 +32,7 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
 
         setArrayList();
 
-        adapter = new TTDeTai_DaDK_Adapter(this, R.layout.row_dsdt_dadk,arrayList);
+        adapter = new DSDeTai_DaDK_Adapter(this, R.layout.row_dsdt_dadk,arrayList);
         lvTTDT.setAdapter(adapter);
 
     }

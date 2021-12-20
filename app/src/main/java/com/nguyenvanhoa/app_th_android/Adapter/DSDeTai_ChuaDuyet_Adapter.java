@@ -13,12 +13,12 @@ import com.nguyenvanhoa.app_th_android.R;
 
 import java.util.List;
 
-public class TTDeTai_ChuaDuyet_Adapter extends BaseAdapter {
+public class DSDeTai_ChuaDuyet_Adapter extends BaseAdapter {
     private Context context;
     private  int layout;
     private List<TTDeTai> deTaiList;
 
-    public TTDeTai_ChuaDuyet_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
+    public DSDeTai_ChuaDuyet_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
         this.context = context;
         this.layout = layout;
         this.deTaiList = deTaiList;

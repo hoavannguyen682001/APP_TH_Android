@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 
-public class TTDeTai_DaDK_Adapter extends BaseAdapter {
+public class DSDeTai_DaDK_Adapter extends BaseAdapter {
     private  Context context;
     private  int layout;
     private  List<TTDeTai> deTaiList;
 
-    public TTDeTai_DaDK_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
+    public DSDeTai_DaDK_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
         this.context = context;
         this.layout = layout;
         this.deTaiList = deTaiList;
