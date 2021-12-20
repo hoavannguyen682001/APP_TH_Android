@@ -106,8 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, "Đăng nhập không thành công... ", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(LoginActivity.this, "Email hoặc mật khẩu không chính xác...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Đăng nhập không thành công \n Email hoặc mật khẩu không chính xác...", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/ivPerson"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/corers_bg"
@@ -33,7 +33,7 @@
             app:layout_constraintVertical_bias="0.3" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nguyễn Văn Hoà"
@@ -43,21 +43,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/ivPerson"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.35" />
-
-        <!--        <TextView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="1911505310217"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintVertical_bias="0.1"-->
-        <!--            app:layout_constraintHorizontal_bias="0.1"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/imageView3"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

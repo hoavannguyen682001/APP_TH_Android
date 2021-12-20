@@ -21,6 +21,12 @@ public class ThongTinDeTai_Activity extends AppCompatActivity {
     private ActivityThongTinDeTaiBinding binding;
     public static String id, uid;
     FirebaseAuth firebaseAuth;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

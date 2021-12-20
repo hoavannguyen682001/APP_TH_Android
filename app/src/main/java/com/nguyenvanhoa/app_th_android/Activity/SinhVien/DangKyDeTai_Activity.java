@@ -36,6 +36,7 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
+    private boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,11 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
         binding.btnDangKyDT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateData();
+                if(check){
+                    Toast.makeText(DangKyDeTai_Activity.this, "Bạn đã đăng ký đề tài NCKH, không thể đăng ký thêm...", Toast.LENGTH_SHORT).show();
+                }else{
+                    validateData();
+                }
             }
         });
     }
@@ -108,10 +113,9 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         progressDialog.dismiss();
                         Toast.makeText(DangKyDeTai_Activity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(getApplicationContext(), ThongTinDeTai_Activity.class);
-//                        intent.putExtra("id",timestamp);
-                        //ThongTinDeTai_Activity.id = ""+ timestamp;
-//                        startActivity(intent);
+                        check = true;
+                        Intent intent = new Intent(getApplicationContext(), ThongTinDeTai_Activity.class);
+                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
