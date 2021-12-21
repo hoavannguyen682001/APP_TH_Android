@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +33,7 @@ import com.nguyenvanhoa.app_th_android.databinding.ActivityProfileSinhvienBindin
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class Profile_SinhVien_Activity extends AppCompatActivity {
     SimpleDateFormat simpleDateFormat;
@@ -37,6 +41,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
 
     private ActivityProfileSinhvienBinding binding;
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,9 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setCanceledOnTouchOutside(false);
 
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -69,6 +77,15 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
             }
         });
         loadUserInfo();
+        binding.tvUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateUserInfo();
+                progressDialog.setMessage("Đang tải lại dữ liệu");
+                progressDialog.show();
+                loadUserInfo();
+            }
+        });
     }
 
     private void loadUserInfo() {
@@ -117,6 +134,43 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
+        progressDialog.dismiss();
+    }
+
+    private void updateUserInfo(){
+        progressDialog.setMessage("Đang cập nhật thông tin cá nhân...");
+        progressDialog.show();
+
+        String classUser = binding.edtLop.getText().toString();
+        String dob =  binding.edtNgaySinh.getText().toString();
+        String gender =  binding.edtGioiTinh.getText().toString();
+        String nganh = binding.edtNganh.getText().toString();
+        String khoa = binding.edtKhoa.getText().toString();
+
+        HashMap<String ,Object> hashMap = new HashMap<>();
+        hashMap.put("class", classUser);
+        hashMap.put("gender", gender);
+        hashMap.put("dob", dob);
+        hashMap.put("nganh", nganh);
+        hashMap.put("khoa", khoa);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(firebaseAuth.getUid())
+                .updateChildren(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Profile_SinhVien_Activity.this, "Cập nhật thông tin thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Profile_SinhVien_Activity.this, "Cập nhật thông tin không thành công...", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

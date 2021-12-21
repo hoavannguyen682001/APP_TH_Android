@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -20,10 +21,16 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nguyenvanhoa.app_th_android.Activity.LoginActivity;
 import com.nguyenvanhoa.app_th_android.Adapter.ThongBao_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.ThongBao;
 import com.nguyenvanhoa.app_th_android.R;
+import com.nguyenvanhoa.app_th_android.databinding.ActivitySinhVienBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,53 +38,51 @@ import java.util.Calendar;
 
 public class SinhVienActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DrawerLayout dr_layout;
-    private Toolbar tool_bar;
-    private NavigationView nv_view;
-    private TextView tvDate,tvTitle;
+    private TextView tvName,tvEmail;
     private ListView lvTB;
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
 
     private FirebaseAuth firebaseAuth;
+    private View header;
+    private ActivitySinhVienBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_sinh_vien);
+        binding = ActivitySinhVienBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Anhxa();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        nv_view.bringToFront();
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, dr_layout,tool_bar,R.string.mo,R.string.dong);
-        dr_layout.addDrawerListener(toggle);
+        //navigation crawler
+        binding.navigationView.bringToFront();
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout,binding.toobar,R.string.mo,R.string.dong);
+        binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        nv_view.setNavigationItemSelectedListener(this);
+        binding.navigationView.setNavigationItemSelectedListener(this);
+
+        //header navigation crawler
+        header =  binding.navigationView.getHeaderView(0);
+        tvName = header.findViewById(R.id.tvName);
+        tvEmail = header.findViewById(R.id.tvEmail);
+
+        loadUserInfo();
 
         adapter = new ThongBao_Adapter(this, R.layout.row_listview_thongbao,setArrayList());
-        lvTB.setAdapter(adapter);
+        binding.lvTB.setAdapter(adapter);
 
     }
 
     @Override
     public void onBackPressed() {
-        if(dr_layout.isDrawerOpen(GravityCompat.START)){
-            dr_layout.closeDrawer(GravityCompat.START);
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         }else {
             super.onBackPressed();
         }
-    }
-    private void Anhxa() {
-        dr_layout= findViewById(R.id.drawer_layout);
-        tool_bar= findViewById(R.id.toobar);
-        nv_view= findViewById(R.id.navigation_view);
-
-        tvDate = findViewById(R.id.tvDate);
-        tvTitle = findViewById(R.id.tvTitle);
-        lvTB = findViewById(R.id.lvTB);
     }
 
     @Override
@@ -102,7 +107,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
             default:
                 break;
         }
-        dr_layout.closeDrawer(GravityCompat.START);
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
     }
@@ -118,5 +123,26 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         arrayList.add(new ThongBao("22/12 2021","Thông báo số 6"));
         arrayList.add(new ThongBao("24/12 2021","Danh sách đề tài năm 2021"));
         return arrayList;
+    }
+
+    private void loadUserInfo(){
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(firebaseAuth.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String email = "" + snapshot.child("email").getValue();
+                        String name = "" + snapshot.child("name").getValue();
+
+                        tvEmail.setText(email);
+                        tvName.setText(name);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }

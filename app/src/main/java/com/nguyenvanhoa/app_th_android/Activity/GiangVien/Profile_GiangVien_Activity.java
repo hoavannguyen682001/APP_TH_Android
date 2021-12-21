@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +27,7 @@ import com.nguyenvanhoa.app_th_android.databinding.ActivityProfileGiangVienBindi
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class Profile_GiangVien_Activity extends AppCompatActivity {
 
@@ -30,8 +35,8 @@ public class Profile_GiangVien_Activity extends AppCompatActivity {
     private SimpleDateFormat simpleDateFormat;
     private Calendar calendar;
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
-    EditText edtNgaySinh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,16 +46,24 @@ public class Profile_GiangVien_Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        edtNgaySinh = (EditText) findViewById(R.id.edtNgaySinh);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setCanceledOnTouchOutside(false);
 
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        edtNgaySinh.setOnClickListener(new View.OnClickListener() {
+        binding.edtNgaySinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                loadDateOfBirth();
             }
         });
         loadUserInfo();
+        binding.tvUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateUserInfo();
+            }
+        });
     }
 
     private void loadDateOfBirth() {
@@ -111,6 +124,40 @@ public class Profile_GiangVien_Activity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
+        progressDialog.dismiss();
+    }
+    private void updateUserInfo(){
+        progressDialog.setMessage("Đang cập nhật thông tin cá nhân...");
+        progressDialog.show();
+
+        String CMND = binding.edtCMDN.getText().toString();
+        String dob = binding.edtNgaySinh.getText().toString();
+        String phoneNumber = binding.edtSDT.getText().toString();
+        String khoa = binding.edtKhoa.getText().toString();
+
+        HashMap<String ,Object> hashMap = new HashMap<>();
+        hashMap.put("phoneNumber", phoneNumber);
+        hashMap.put("dob", dob);
+        hashMap.put("CMND", CMND);
+        hashMap.put("khoa", khoa);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(firebaseAuth.getUid())
+                .updateChildren(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Profile_GiangVien_Activity.this, "Cập nhật thông tin thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Profile_GiangVien_Activity.this, "Cập nhật thông tin không thành công...", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
