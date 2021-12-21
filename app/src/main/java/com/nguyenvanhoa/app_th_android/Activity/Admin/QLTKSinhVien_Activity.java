@@ -8,9 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.nguyenvanhoa.app_th_android.Adapter.Giaovien_adapter;
-import com.nguyenvanhoa.app_th_android.Adapter.Sinhvien_adapter;
-import com.nguyenvanhoa.app_th_android.Model.Giaovien;
+import com.nguyenvanhoa.app_th_android.Adapter.QLTKSinhvien_adapter;
 import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
@@ -20,7 +18,7 @@ public class QLTKSinhVien_Activity extends AppCompatActivity {
 
     private TextView txtTk_sv,txtMk_sv;
     private ArrayList<Sinhvien> array_sinhvien;
-    private Sinhvien_adapter sinhvien_adapter;
+    private QLTKSinhvien_adapter sinhvien_adapter;
     private ListView lv_sinhvien;
 
 
@@ -32,7 +30,7 @@ public class QLTKSinhVien_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_qltk_sinhvien);
 
         Anhxa();
-        sinhvien_adapter = new Sinhvien_adapter(this, setArrayList(), R.layout.row_listview_sinhvien);
+        sinhvien_adapter = new QLTKSinhvien_adapter(this, setArrayList(), R.layout.row_listview_sinhvien);
         lv_sinhvien.setAdapter(sinhvien_adapter);
     }
 

@@ -9,26 +9,25 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.nguyenvanhoa.app_th_android.Model.Giaovien;
-import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
 import java.util.List;
 
-public class Sinhvien_adapter extends BaseAdapter {
+public class QLTKGiaovien_adapter extends BaseAdapter {
 
     private Context context_view;
-    private List<Sinhvien> list_sinhvien;
+    private List<Giaovien> list_giaovien;
     private int layout;
 
-    public Sinhvien_adapter(Context context_view, List<Sinhvien> list_sinhvien, int layout) {
+    public QLTKGiaovien_adapter(Context context_view, List<Giaovien> list_giaovien, int layout) {
         this.context_view = context_view;
-        this.list_sinhvien = list_sinhvien;
+        this.list_giaovien = list_giaovien;
         this.layout = layout;
     }
 
     @Override
     public int getCount() {
-        return list_sinhvien.size();
+        return list_giaovien.size();
     }
 
     @Override
@@ -42,25 +41,25 @@ public class Sinhvien_adapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-       Sinhvien_adapter.ViewHolder viewHolder;
+    public View getView(int i, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if(convertView == null){
-            convertView = LayoutInflater.from(context_view).inflate(R.layout.row_listview_sinhvien,parent,false);
+            convertView = LayoutInflater.from(context_view).inflate(R.layout.row_listview_giaovien,parent,false);
             viewHolder = new ViewHolder();
-            viewHolder.txtTk_sinhvien= (TextView) convertView.findViewById(R.id.txt_tk_sinhvien);
-            viewHolder.txtMk_sinhvien = (TextView) convertView.findViewById(R.id.txt_mk_sinhvien);
+            viewHolder.txtTen_GV = (TextView) convertView.findViewById(R.id.txt_ten_tk);
+            viewHolder.txt_MK = (TextView) convertView.findViewById(R.id.txt_mk);
             convertView.setTag(viewHolder);
         }
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Sinhvien sukien = list_sinhvien.get(position);
-        viewHolder.txtTk_sinhvien.setText(sukien.getTk_sinhvien());
-        viewHolder.txtMk_sinhvien.setText(sukien.getMk_sinhvien());
+        Giaovien event = list_giaovien.get(i);
+        viewHolder.txtTen_GV.setText(event.getTen_gv());
+        viewHolder.txt_MK.setText(event.getMk_gv());
         return convertView;
     }
     public class ViewHolder {
-        TextView txtTk_sinhvien, txtMk_sinhvien;
-        ImageButton xoa, sua;
+        TextView txtTen_GV, txt_MK;
+        ImageButton img_del, img_edit;
     }
 }
