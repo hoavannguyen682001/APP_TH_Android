@@ -1,29 +1,43 @@
 package com.nguyenvanhoa.app_th_android.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.nguyenvanhoa.app_th_android.Filter.FilterAccountSV;
 import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QLTKSinhvien_adapter extends BaseAdapter {
+public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
 
     private Context context_view;
-    private ArrayList<Sinhvien> arrayList;
+    public ArrayList<Sinhvien> arrayList, filterList;
     private int layout;
+    private FilterAccountSV filter;
 
     public QLTKSinhvien_adapter(Context context_view, ArrayList<Sinhvien> arrayList, int layout) {
         this.context_view = context_view;
         this.arrayList = arrayList;
         this.layout = layout;
+        this.filterList = arrayList;
     }
 
     @Override
@@ -71,7 +85,24 @@ public class QLTKSinhvien_adapter extends BaseAdapter {
         holder.ibDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(context_view);
+                builder.setTitle ("Delete")
+                        .setMessage ("Bạn có chắc là muốn xoá tài khoản này?")
+                        .setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //begin delete
+                            Toast.makeText(context_view, "Đang xoá tài khoản...", Toast.LENGTH_SHORT).show();
+                            deleteTaiKhoanSV(model, holder);
+                        }
+                    })
+                        .setNegativeButton("Trở về", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                        .show();
             }
         });
         holder.ibEdit.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +114,35 @@ public class QLTKSinhvien_adapter extends BaseAdapter {
 
         return convertView;
     }
+
+    private void deleteTaiKhoanSV(Sinhvien model, ViewHolder holder) {
+        //get uid uses
+        String uid = model.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(uid)
+                .removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context_view, "Xoá thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context_view, "Xoá tài khoản không thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new FilterAccountSV(filterList, this);
+        }
+        return filter;
+    }
+
     public class ViewHolder {
         TextView tvEmailSV, tvMKSV, tvTenSV;
         ImageButton ibEdit, ibDelete;

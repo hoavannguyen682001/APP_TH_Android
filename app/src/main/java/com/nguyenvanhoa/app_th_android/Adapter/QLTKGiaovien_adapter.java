@@ -1,6 +1,8 @@
 package com.nguyenvanhoa.app_th_android.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenvanhoa.app_th_android.Activity.Admin.QLTKGiaoVien_Activity;
 import com.nguyenvanhoa.app_th_android.Model.Giaovien;
 import com.nguyenvanhoa.app_th_android.R;
@@ -86,7 +92,24 @@ public class QLTKGiaovien_adapter extends BaseAdapter {
         holder.ibDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle ("Delete")
+                        .setMessage ("Bạn có chắc là muốn xoá tài khoản này?")
+                        .setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //begin delete
+                                Toast.makeText(context, "Đang xoá tài khoản...", Toast.LENGTH_SHORT).show();
+                                deleteTaiKhoanGV(model, holder);
+                            }
+                        })
+                        .setNegativeButton("Trở về", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
         holder.ibEdit.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +119,26 @@ public class QLTKGiaovien_adapter extends BaseAdapter {
             }
         });
         return view;
+    }
+
+    private void deleteTaiKhoanGV(Giaovien model, ViewHolder holder) {
+        //get uid uses
+        String uid = model.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(uid)
+                .removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Xoá thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Xoá tài khoản không thành công...", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 
