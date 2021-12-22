@@ -5,23 +5,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nguyenvanhoa.app_th_android.Filter.FilterAccountSV;
+import com.nguyenvanhoa.app_th_android.Filter.FilterDanhSachDT_CD;
 import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DSDeTai_ChuaDuyet_Adapter extends BaseAdapter {
+public class DSDeTai_ChuaDuyet_Adapter extends BaseAdapter implements Filterable {
     private Context context;
     private  int layout;
-    private List<TTDeTai> deTaiList;
+    public ArrayList<TTDeTai> deTaiList, filterList;
+    private FilterDanhSachDT_CD filter;
 
-    public DSDeTai_ChuaDuyet_Adapter(Context context, int layout, List<TTDeTai> deTaiList) {
+    public DSDeTai_ChuaDuyet_Adapter(Context context, ArrayList<TTDeTai> deTaiList, int layout) {
         this.context = context;
         this.layout = layout;
         this.deTaiList = deTaiList;
+        this.filterList = deTaiList;
     }
 
     @Override
@@ -59,12 +66,27 @@ public class DSDeTai_ChuaDuyet_Adapter extends BaseAdapter {
         }
 
         TTDeTai deTai = deTaiList.get(i);
+
         //Thong tin de tai chua duyet
         holder.tvTenDT_CD.setText(deTai.getTenDT());
         holder.tvTenCN_CD.setText(deTai.getTenCNDT());
         holder.tvNgayDK_CD.setText(deTai.getTgDK());
+        holder.ivChiTietDT_CD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         return view;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new FilterDanhSachDT_CD(filterList, this);
+        }
+        return filter;
     }
 
     private class ViewHolder{

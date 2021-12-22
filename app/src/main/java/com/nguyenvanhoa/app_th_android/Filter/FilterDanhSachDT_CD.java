@@ -2,17 +2,20 @@ package com.nguyenvanhoa.app_th_android.Filter;
 
 import android.widget.Filter;
 
-import com.nguyenvanhoa.app_th_android.Adapter.QLTKSinhvien_adapter;
-import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
+import com.nguyenvanhoa.app_th_android.Activity.GiangVien.DSDT_ChuaDuyet_Activity;
+import com.nguyenvanhoa.app_th_android.Adapter.DSDeTai_ChuaDuyet_Adapter;
+import com.nguyenvanhoa.app_th_android.Adapter.QLTKGiaovien_adapter;
+import com.nguyenvanhoa.app_th_android.Model.Giaovien;
+import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 
 import java.util.ArrayList;
 
-public class FilterAccountSV extends Filter {
+public class FilterDanhSachDT_CD extends Filter {
 
-    ArrayList<Sinhvien> filterList;
-    QLTKSinhvien_adapter adapter;
+    ArrayList<TTDeTai> filterList;
+    DSDeTai_ChuaDuyet_Adapter adapter;
 
-    public FilterAccountSV(ArrayList<Sinhvien> filterList, QLTKSinhvien_adapter adapter) {
+    public FilterDanhSachDT_CD(ArrayList<TTDeTai> filterList, DSDeTai_ChuaDuyet_Adapter adapter) {
         this.filterList = filterList;
         this.adapter = adapter;
     }
@@ -24,10 +27,10 @@ public class FilterAccountSV extends Filter {
         if (charSequence != null && charSequence.length() > 0){
             //change to upper case, or lower case to avoid case sensitivity
             charSequence = charSequence.toString().toUpperCase();
-            ArrayList<Sinhvien> filteredModels = new ArrayList<>();
+            ArrayList<TTDeTai> filteredModels = new ArrayList<>();
             for (int i=0; i<filterList.size(); i++){
                 //validate
-                if (filterList.get(i).getEmail().toUpperCase().contains(charSequence)) {
+                if (filterList.get(i).getTenDT().toUpperCase().contains(charSequence)) {
                     //add to filtered List
                     filteredModels.add(filterList.get(i));
                 }
@@ -43,7 +46,7 @@ public class FilterAccountSV extends Filter {
 
     @Override
     protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-        adapter.arrayList = (ArrayList<Sinhvien>)filterResults.values;
+        adapter.deTaiList = (ArrayList<TTDeTai>)filterResults.values;
         adapter.notifyDataSetChanged();
     }
 }

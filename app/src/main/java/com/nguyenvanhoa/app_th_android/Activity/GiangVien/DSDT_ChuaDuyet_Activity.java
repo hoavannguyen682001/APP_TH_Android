@@ -1,54 +1,94 @@
 package com.nguyenvanhoa.app_th_android.Activity.GiangVien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nguyenvanhoa.app_th_android.Activity.Admin.QLTKGiaoVien_Activity;
 import com.nguyenvanhoa.app_th_android.Adapter.DSDeTai_ChuaDuyet_Adapter;
+import com.nguyenvanhoa.app_th_android.Adapter.QLTKGiaovien_adapter;
+import com.nguyenvanhoa.app_th_android.Model.Giaovien;
 import com.nguyenvanhoa.app_th_android.Model.TTDeTai;
 import com.nguyenvanhoa.app_th_android.R;
+import com.nguyenvanhoa.app_th_android.databinding.ActivityDsdtChuaDuyetBinding;
 
 import java.util.ArrayList;
 
 public class DSDT_ChuaDuyet_Activity extends AppCompatActivity {
-    private ListView lvTTDT_CD;
+
     private ArrayList<TTDeTai> arrayList;
     private DSDeTai_ChuaDuyet_Adapter adapter;
 
-    private TextView tvTenDT_CD, tvTenCN_CD, tvNgayDK_CD;
+    private ActivityDsdtChuaDuyetBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_dsdt_chua_duyet);
+        binding = ActivityDsdtChuaDuyetBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        AnhXa();
+        loadDSDT_ChuaDuyet();
+        binding.edtTimKiemDT.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        setArrayList();
+            }
 
-        adapter = new DSDeTai_ChuaDuyet_Adapter(this, R.layout.row_dsdt_chuaduyet,arrayList);
-        lvTTDT_CD.setAdapter(adapter);
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try {
+                    adapter.getFilter().filter(charSequence);
+                }catch (Exception e){
 
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
-    private void AnhXa(){
-        tvTenDT_CD = findViewById(R.id.tenDT_CD);
-        tvTenCN_CD = findViewById(R.id.tenCN_CD);
-        tvNgayDK_CD = findViewById(R.id.ngayDK_CD);
-        lvTTDT_CD = findViewById(R.id.lvDTChuaDuyet);
-    }
-    private void setArrayList(){
+    private void loadDSDT_ChuaDuyet() {
         arrayList = new ArrayList<>();
 
-        arrayList.add(new TTDeTai("De tai 2","Nguyen van A","17/12/2021"));
-        arrayList.add(new TTDeTai("De tai 2","Nguyen van A","17/12/2021"));
-        arrayList.add(new TTDeTai("De tai 2","Nguyen van A","17/12/2021"));
-        arrayList.add(new TTDeTai("De tai 2","Nguyen van A","17/12/2021"));
-        arrayList.add(new TTDeTai("De tai 2","Nguyen van A","17/12/2021"));
+        DatabaseReference ref = FirebaseDatabase.getInstance ().getReference( "DanhSachDeTai");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //clear arraylist before adding data into it
+                arrayList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    //get data
+                    TTDeTai model = ds.getValue(TTDeTai.class);
+                    if(model.getTrangThaiDT().equals("Chờ duyệt")){
+                        arrayList.add(model);
+                    }
+                }
+                //setup adapter
+                adapter = new DSDeTai_ChuaDuyet_Adapter(DSDT_ChuaDuyet_Activity.this, arrayList,R.layout.row_dsdt_chuaduyet);
+                binding.lvDTChuaDuyet.setAdapter( adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
 }

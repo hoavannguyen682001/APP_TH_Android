@@ -1,6 +1,8 @@
 package com.nguyenvanhoa.app_th_android.Activity.Admin;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -40,6 +42,26 @@ public class QLTKGiaoVien_Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         loadTKGiaoVien();
+        binding.edtTimKiem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    adapter.getFilter().filter(charSequence);
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 

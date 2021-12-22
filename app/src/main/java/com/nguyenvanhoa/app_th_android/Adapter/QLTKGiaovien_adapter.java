@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nguyenvanhoa.app_th_android.Activity.Admin.QLTKGiaoVien_Activity;
+import com.nguyenvanhoa.app_th_android.Filter.FilterAccountGiaoVien;
+import com.nguyenvanhoa.app_th_android.Filter.FilterAccountSV;
 import com.nguyenvanhoa.app_th_android.Model.Giaovien;
 import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.RowListviewGiaovienBinding;
@@ -27,17 +31,19 @@ import com.nguyenvanhoa.app_th_android.databinding.RowListviewGiaovienBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QLTKGiaovien_adapter extends BaseAdapter {
+public class QLTKGiaovien_adapter extends BaseAdapter implements Filterable {
 
 
     private Context context;
-    private ArrayList<Giaovien> arrayList;
+    public ArrayList<Giaovien> arrayList, filterList;
     private int layout;
+    private FilterAccountGiaoVien filter;
 
     public QLTKGiaovien_adapter(Context context, ArrayList<Giaovien> arrayList, int layout) {
         this.context = context;
         this.arrayList = arrayList;
         this.layout = layout;
+        this.filterList = arrayList;
     }
     @Override
     public int getCount() {
@@ -139,6 +145,14 @@ public class QLTKGiaovien_adapter extends BaseAdapter {
                         Toast.makeText(context, "Xoá tài khoản không thành công...", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new FilterAccountGiaoVien(filterList, this);
+        }
+        return filter;
     }
 
 

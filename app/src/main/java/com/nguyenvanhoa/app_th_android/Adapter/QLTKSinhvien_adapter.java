@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
@@ -19,11 +20,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nguyenvanhoa.app_th_android.Activity.SinhVien.Profile_SinhVien_Activity;
 import com.nguyenvanhoa.app_th_android.Filter.FilterAccountSV;
 import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
@@ -62,9 +65,9 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
             convertView = LayoutInflater.from(context_view).inflate(R.layout.row_listview_sinhvien,parent,false);
             holder = new ViewHolder();
 
-            holder.tvEmailSV = (TextView) convertView.findViewById(R.id.tvEmailSV);
-            holder.tvMKSV = (TextView) convertView.findViewById(R.id.tvMKSV);
-            holder.tvTenSV = (TextView) convertView.findViewById(R.id.tvTenSV);
+            holder.tvEmailSV = (EditText) convertView.findViewById(R.id.tvEmailSV);
+            holder.tvMKSV = (EditText) convertView.findViewById(R.id.tvMKSV);
+            holder.tvTenSV = (EditText) convertView.findViewById(R.id.tvTenSV);
             holder.ibDelete = (ImageButton) convertView.findViewById(R.id.ibDeleteSV);
             holder.ibEdit = (ImageButton) convertView.findViewById(R.id.ibEditSV);
 
@@ -75,6 +78,7 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
         }
 
         Sinhvien model = arrayList.get(position);
+        String uid = model.getUid();
         String email = model.getEmail();
         String name = model.getName();
         String password = model.getPassword();
@@ -108,12 +112,12 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
         holder.ibEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
 
         return convertView;
     }
+
 
     private void deleteTaiKhoanSV(Sinhvien model, ViewHolder holder) {
         //get uid uses
@@ -144,7 +148,7 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
     }
 
     public class ViewHolder {
-        TextView tvEmailSV, tvMKSV, tvTenSV;
+        EditText tvEmailSV, tvMKSV, tvTenSV;
         ImageButton ibEdit, ibDelete;
     }
 }

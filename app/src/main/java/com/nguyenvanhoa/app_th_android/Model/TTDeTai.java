@@ -2,12 +2,13 @@ package com.nguyenvanhoa.app_th_android.Model;
 
 public class TTDeTai {
     private String tenDT, linhvuc, tenCNDT, tenTV, tenGV, tgThucHien, tgDK;
-    private String chiPhi, trangThaiDT;
+    private String chiPhi, trangThaiDT, uid;
+    private Long id;
 
     public TTDeTai() {
     }
 
-    public TTDeTai(String tenDT, String linhvuc, String tenCNDT, String tenTV, String tenGV, String tgThucHien, String tgDK, String chiPhi,String trangThaiDT) {
+    public TTDeTai(Long id, String uid,String tenDT, String linhvuc, String tenCNDT, String tenTV, String tenGV, String tgThucHien, String tgDK, String chiPhi,String trangThaiDT) {
         this.tenDT = tenDT;
         this.linhvuc = linhvuc;
         this.tenCNDT = tenCNDT;
@@ -17,12 +18,30 @@ public class TTDeTai {
         this.tgDK = tgDK;
         this.chiPhi = chiPhi;
         this.trangThaiDT = trangThaiDT;
+        this.id = id;
+        this.uid = uid;
     }
 
     public TTDeTai(String tenDT, String tenCNDT,String tgDK) {
         this.tenDT = tenDT;
         this.tenCNDT = tenCNDT;
         this.tgDK = tgDK;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getTrangThaiDT() {
