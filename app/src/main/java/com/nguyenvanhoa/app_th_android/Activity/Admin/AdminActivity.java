@@ -12,38 +12,70 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nguyenvanhoa.app_th_android.R;
+import com.nguyenvanhoa.app_th_android.databinding.ActivityAdminBinding;
+import com.nguyenvanhoa.app_th_android.databinding.ActivityGiangVienBinding;
 
 public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DrawerLayout dr_layout;
-    private Toolbar tool_bar;
-    private NavigationView nv_view;
+    private ActivityAdminBinding binding;
+    private FirebaseAuth firebaseAuth;
+    private TextView tvName, tvEmail;
+    private View header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_admin);
+        binding = ActivityAdminBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Anhxa();
-        // setSupportActionBar(tool_bar);
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, dr_layout,tool_bar,R.string.mo,R.string.dong);
-        dr_layout.addDrawerListener(toggle);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        binding.navigationView.bringToFront();
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout,binding.toobar,R.string.mo,R.string.dong);
+        binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        binding.navigationView.setNavigationItemSelectedListener(this);
 
-        nv_view.setNavigationItemSelectedListener(this);
+        //header navigation crawler
+        header =  binding.navigationView.getHeaderView(0);
+        tvName = header.findViewById(R.id.tvName);
+        tvEmail = header.findViewById(R.id.tvEmail);
 
+        loadAdminInfo();
     }
 
-    private void Anhxa() {
-        dr_layout=findViewById(R.id.drawer_layout);
-        tool_bar=findViewById(R.id.toobar);
-        nv_view=findViewById(R.id.navigation_view);
+    private void loadAdminInfo() {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+            ref.child(firebaseAuth.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String email = "" + snapshot.child("email").getValue();
+                            String name = "" + snapshot.child("name").getValue();
+
+                            tvEmail.setText(email);
+                            tvName.setText(name);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
     }
 
     @Override
@@ -63,15 +95,15 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             default:
                 break;
         }
-        dr_layout.closeDrawer(GravityCompat.START);
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        if(dr_layout.isDrawerOpen(GravityCompat.START)){
-            dr_layout.closeDrawer(GravityCompat.START);
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         }else {
             super.onBackPressed();
         }

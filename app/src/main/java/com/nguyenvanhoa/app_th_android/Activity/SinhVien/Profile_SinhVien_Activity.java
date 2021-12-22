@@ -100,7 +100,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
                         String timestamp = "" + snapshot.child("timestamp").getValue();
                         String uid = "" + snapshot.child("uid").getValue();
                         String userType = "" + snapshot.child("userType").getValue();
-                        String classUser = "" + snapshot.child("class").getValue();
+                        String classUser = "" + snapshot.child("lopSH").getValue();
                         String dob = "" + snapshot.child("dob").getValue();
                         String gender = "" + snapshot.child("gender").getValue();
                         String nganh = "" + snapshot.child("nganh").getValue();
@@ -150,7 +150,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         String khoa = binding.edtKhoa.getText().toString();
 
         HashMap<String ,Object> hashMap = new HashMap<>();
-        hashMap.put("class", classUser);
+        hashMap.put("lopSH", classUser);
         hashMap.put("gender", gender);
         hashMap.put("dob", dob);
         hashMap.put("nganh", nganh);

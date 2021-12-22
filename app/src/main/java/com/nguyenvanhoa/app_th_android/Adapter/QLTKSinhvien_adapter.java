@@ -11,23 +11,24 @@ import android.widget.TextView;
 import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QLTKSinhvien_adapter extends BaseAdapter {
 
     private Context context_view;
-    private List<Sinhvien> list_sinhvien;
+    private ArrayList<Sinhvien> arrayList;
     private int layout;
 
-    public QLTKSinhvien_adapter(Context context_view, List<Sinhvien> list_sinhvien, int layout) {
+    public QLTKSinhvien_adapter(Context context_view, ArrayList<Sinhvien> arrayList, int layout) {
         this.context_view = context_view;
-        this.list_sinhvien = list_sinhvien;
+        this.arrayList = arrayList;
         this.layout = layout;
     }
 
     @Override
     public int getCount() {
-        return list_sinhvien.size();
+        return arrayList.size();
     }
 
     @Override
@@ -42,24 +43,48 @@ public class QLTKSinhvien_adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       QLTKSinhvien_adapter.ViewHolder viewHolder;
+       ViewHolder holder;
         if(convertView == null){
             convertView = LayoutInflater.from(context_view).inflate(R.layout.row_listview_sinhvien,parent,false);
-            viewHolder = new ViewHolder();
-            viewHolder.txtTk_sinhvien= (TextView) convertView.findViewById(R.id.txt_tk_sinhvien);
-            viewHolder.txtMk_sinhvien = (TextView) convertView.findViewById(R.id.txt_mk_sinhvien);
-            convertView.setTag(viewHolder);
+            holder = new ViewHolder();
+
+            holder.tvEmailSV = (TextView) convertView.findViewById(R.id.tvEmailSV);
+            holder.tvMKSV = (TextView) convertView.findViewById(R.id.tvMKSV);
+            holder.tvTenSV = (TextView) convertView.findViewById(R.id.tvTenSV);
+            holder.ibDelete = (ImageButton) convertView.findViewById(R.id.ibDeleteSV);
+            holder.ibEdit = (ImageButton) convertView.findViewById(R.id.ibEditSV);
+
+            convertView.setTag(holder);
         }
         else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        Sinhvien sukien = list_sinhvien.get(position);
-        viewHolder.txtTk_sinhvien.setText(sukien.getTk_sinhvien());
-        viewHolder.txtMk_sinhvien.setText(sukien.getMk_sinhvien());
+
+        Sinhvien model = arrayList.get(position);
+        String email = model.getEmail();
+        String name = model.getName();
+        String password = model.getPassword();
+
+        holder.tvEmailSV.setText(email);
+        holder.tvMKSV.setText(password);
+        holder.tvTenSV.setText(name);
+        holder.ibDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        holder.ibEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         return convertView;
     }
     public class ViewHolder {
-        TextView txtTk_sinhvien, txtMk_sinhvien;
-        ImageButton xoa, sua;
+        TextView tvEmailSV, tvMKSV, tvTenSV;
+        ImageButton ibEdit, ibDelete;
     }
 }

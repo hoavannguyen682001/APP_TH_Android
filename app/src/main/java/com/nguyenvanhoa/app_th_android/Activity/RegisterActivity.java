@@ -130,11 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
         hashMap.put("profileImage", "");
         hashMap.put("userType", "sinhvien");
         hashMap.put("timestamp", timestamp);
-        hashMap.put("class", "");
         hashMap.put("gender", "");
         hashMap.put("dob", "");
         hashMap.put("nganh", "");
         hashMap.put("khoa", "");
+        hashMap.put("lopSH","");
         //set data to db
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(uid)

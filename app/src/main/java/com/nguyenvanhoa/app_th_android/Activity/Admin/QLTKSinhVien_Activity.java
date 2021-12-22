@@ -5,21 +5,29 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nguyenvanhoa.app_th_android.Adapter.QLTKGiaovien_adapter;
 import com.nguyenvanhoa.app_th_android.Adapter.QLTKSinhvien_adapter;
+import com.nguyenvanhoa.app_th_android.Model.Giaovien;
 import com.nguyenvanhoa.app_th_android.Model.Sinhvien;
 import com.nguyenvanhoa.app_th_android.R;
+import com.nguyenvanhoa.app_th_android.databinding.ActivityQltkSinhvienBinding;
 
 import java.util.ArrayList;
 
 public class QLTKSinhVien_Activity extends AppCompatActivity {
 
-    private TextView txtTk_sv,txtMk_sv;
-    private ArrayList<Sinhvien> array_sinhvien;
-    private QLTKSinhvien_adapter sinhvien_adapter;
-    private ListView lv_sinhvien;
+    private ArrayList<Sinhvien> arrayList;
+    private QLTKSinhvien_adapter adapter;
+    private ActivityQltkSinhvienBinding binding;
 
 
     @Override
@@ -27,28 +35,40 @@ public class QLTKSinhVien_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_qltk_sinhvien);
+        binding = ActivityQltkSinhvienBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Anhxa();
-        sinhvien_adapter = new QLTKSinhvien_adapter(this, setArrayList(), R.layout.row_listview_sinhvien);
-        lv_sinhvien.setAdapter(sinhvien_adapter);
+        loadTaiKhoanSV();
+
     }
 
-    private void Anhxa() {
-        txtTk_sv = (TextView) findViewById(R.id.txt_tk_sinhvien);
-        txtMk_sv= (TextView) findViewById(R.id.txt_mk_sinhvien);
-        lv_sinhvien = (ListView) findViewById(R.id.lv_sinhvien);
-    }
-    private ArrayList setArrayList(){
-        array_sinhvien = new ArrayList<>();
+    private void loadTaiKhoanSV() {
+        arrayList = new ArrayList<>();
 
-        array_sinhvien.add(new Sinhvien("sinhvien_1@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_2@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_3@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_4@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_5@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_6@gmail.com","sinhvien123"));
-        array_sinhvien.add(new Sinhvien("sinhvien_7@gmail.com","sinhvien123"));
-        return array_sinhvien;
+        DatabaseReference ref = FirebaseDatabase.getInstance ().getReference( "Users");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //clear arraylist before adding data into it
+                arrayList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    //get data
+                    Sinhvien model = ds.getValue(Sinhvien.class);
+                    if(model.getUserType().equals("sinhvien")){
+                        //add to arrayist
+                        arrayList.add(model);
+                    }
+
+                }
+                //setup adapter
+                adapter = new QLTKSinhvien_adapter(QLTKSinhVien_Activity.this, arrayList,R.layout.row_listview_sinhvien);
+                binding.lvSinhvien.setAdapter( adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
