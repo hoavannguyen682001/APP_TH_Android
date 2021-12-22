@@ -11,9 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="24dp"
+        android:background="@color/menu_nav"
         android:text="Danh sách đề tài đã duyệt"
         android:textAlignment="center"
-        android:textColor="@color/menu_nav"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +64,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#f1f1f1"
+        android:background="@color/nen_admin"
         app:layout_constraintVertical_bias="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,12 +76,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/bg_listview"
-            app:layout_constraintWidth_percent="0.95"
-            app:layout_constraintHeight_percent="0.95"
+            android:divider="@color/nen_admin"
+            android:dividerHeight="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.95"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.95" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
