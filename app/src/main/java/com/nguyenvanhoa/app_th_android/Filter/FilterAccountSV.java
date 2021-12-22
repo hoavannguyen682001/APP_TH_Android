@@ -21,7 +21,7 @@ public class FilterAccountSV extends Filter {
     @Override
     protected FilterResults performFiltering(CharSequence charSequence) {
         FilterResults results = new FilterResults ();
-        if (charSequence != null && charSequence. length() > 8){
+        if (charSequence != null && charSequence. length() > 0){
             //change to upper case, or lower case to avoid case sensitivity
             charSequence = charSequence.toString().toUpperCase();
             ArrayList<Sinhvien> filteredModels = new ArrayList<>();
