@@ -23,7 +23,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/corers_bg"
-        android:src="@drawable/ic_baseline_person_24"
+        android:src="@drawable/ic_person"
         app:layout_constraintVertical_bias="0.4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
