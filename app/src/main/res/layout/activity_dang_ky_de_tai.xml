@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:paddingVertical="18dp"
         android:text="Đăng Ký Đề Tài"
+        android:background="@color/menu_nav"
         android:textAlignment="center"
-        android:textColor="@color/menu_nav"
+        android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:background="@drawable/bg_constraint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +53,7 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="1. Tên đề tài:"
                 android:textSize="18sp"
@@ -66,10 +68,9 @@
 
             <EditText
                 android:id="@+id/edtTenDT"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ten de tai"
-
+                android:hint="Tên đề tài"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +80,7 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="2. Lĩnh vực đề tài: "
                 android:textSize="18sp"
@@ -94,9 +95,9 @@
 
             <EditText
                 android:id="@+id/edtLVDT"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Linh vuc de tai"
+                android:hint="Lĩnh vực đề tài"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +113,7 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:background="@drawable/bg_constraint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +124,7 @@
 
             <TextView
                 android:id="@+id/tvSV"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="3. Chủ nhiệm đề tài (Nhóm trường): "
                 android:textSize="18sp"
@@ -137,9 +139,9 @@
 
             <EditText
                 android:id="@+id/edtTenCNDT"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="sinh vien"
+                android:hint="Sinh viên"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +151,7 @@
 
             <TextView
                 android:id="@+id/tvSV2"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="4. Sinh viên tham gia thực hiện đề tài: "
                 android:textSize="18sp"
@@ -164,7 +166,7 @@
 
 
             <ScrollView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -181,7 +183,7 @@
                         android:id="@+id/edtSVTG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="sinh vien"
+                        android:hint="Sinh viên"
                         android:inputType="textMultiLine"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -197,6 +199,7 @@
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:background="@drawable/bg_constraint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +210,7 @@
 
             <TextView
                 android:id="@+id/tv4"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="5. Giáo viên hướng dẫn: "
                 android:textSize="18sp"
@@ -222,9 +225,9 @@
 
             <EditText
                 android:id="@+id/edtGV"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="giao vien"
+                android:hint="Giáo viên"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -234,7 +237,7 @@
 
             <TextView
                 android:id="@+id/tv5"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="6. Thời gian thực hiện đề tài (Tuần): "
                 android:textSize="18sp"
@@ -249,9 +252,9 @@
 
             <EditText
                 android:id="@+id/edtThoiGian"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="thoi gian"
+                android:hint="Thời gian "
                 android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -262,7 +265,7 @@
 
             <TextView
                 android:id="@+id/tv6"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="7. Chi phí thực hiện dự kiến (VND):"
                 android:textSize="18sp"
@@ -277,9 +280,9 @@
 
             <EditText
                 android:id="@+id/edtChiPhi"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Chi phi"
+                android:hint="Chi phí"
                 android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

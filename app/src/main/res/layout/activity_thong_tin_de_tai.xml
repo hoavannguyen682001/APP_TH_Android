@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Ten de tai"
+                android:hint="Tên đề tài"
                 android:textSize="20sp"
                 app:layout_constraintVertical_bias="0.3"
                 app:layout_constraintBottom_toBottomOf="parent"
