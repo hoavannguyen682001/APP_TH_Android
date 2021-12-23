@@ -85,6 +85,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/bg_listview"
+            android:divider="@color/nen_admin"
+            android:dividerHeight="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.95"
