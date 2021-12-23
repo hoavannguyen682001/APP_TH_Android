@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="Danh sách đề tài đã được duyệt"
+        android:text="Danh sách đề tài đang chờ duyệt"
         android:textAlignment="center"
         android:background="@color/menu_nav"
         android:textColor="@color/white"

@@ -9,7 +9,7 @@
 
         <item
             android:id="@+id/dschua_duyet"
-            android:title="Danh sách đề tài đang chờ duyệt"
+            android:title="Danh sách đề tài chờ duyệt"
             android:icon="@drawable/ic_dangky"/>
 
 
