@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nguyenvanhoa.app_th_android.Activity.LoginActivity;
 import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityAdminBinding;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityGiangVienBinding;
@@ -91,6 +92,11 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_dangki:
                 startActivity(new Intent(getApplicationContext(), DangKiTaiKhoan_Activity.class));
+                break;
+            case R.id.nav_exit:
+                firebaseAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
                 break;
             default:
                 break;

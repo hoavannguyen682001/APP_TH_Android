@@ -1,5 +1,9 @@
 package com.nguyenvanhoa.app_th_android.Activity.SinhVien;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,20 +11,28 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +40,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityProfileSinhvienBinding;
 
@@ -42,6 +57,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
     private ActivityProfileSinhvienBinding binding;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private Uri imageUri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +92,137 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
         loadUserInfo();
+        binding.ivPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showImageAttachMenu();
+            }
+        });
+
         binding.tvUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateUserInfo();
+                validateData();
                 progressDialog.setMessage("Đang tải lại dữ liệu");
                 progressDialog.show();
                 loadUserInfo();
             }
         });
+
     }
+
+    private void validateData() {
+        if(imageUri == null){
+            updateUserInfo("");
+        }else{
+            updateImage();
+        }
+    }
+
+    private void updateImage() {
+        progressDialog.setMessage("Updating profile image");
+        progressDialog.show();
+        //image path and name, use uid to replace previous
+        String filePathAndName = "ProfileImages/"+firebaseAuth.getUid();
+        //storage reference
+        StorageReference reference = FirebaseStorage.getInstance().getReference(filePathAndName);
+        reference.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful());
+                        String uploadedImageUrl = ""+uriTask.getResult();
+                        updateUserInfo(uploadedImageUrl);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText( Profile_SinhVien_Activity.this,"Failed to upload image due to "+e.getMessage (), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
+    private void showImageAttachMenu() {
+        //init/setup popup menu
+        PopupMenu popupMenu = new PopupMenu( this, binding.ivPerson);
+        popupMenu.getMenu ().add(Menu.NONE, 0,  0, "Camera");
+        popupMenu.getMenu ().add(Menu.NONE, 1,  1, "Gallery");
+        popupMenu.show();
+        //handle menu item clicks
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick (MenuItem item) {
+                int which = item.getItemId();
+                if(which == 0){
+                    pickCamera();
+                }else if(which == 1){
+                    pickGallery();
+                }
+                return false;
+            }
+        });
+    }
+
+    private void pickGallery() {
+        //intent to pick image from gallery
+        Intent intent = new Intent(Intent. ACTION_PICK);
+        intent.setType("image/*");
+        galleryActivityResultLauncher.launch(intent);
+    }
+
+    private void pickCamera() {
+        //intent to pick image from camera
+        ContentValues values = new ContentValues ();
+        values.put (MediaStore.Images.Media. TITLE, "New Pick"); //image title
+        values.put (MediaStore.Images.Media.DESCRIPTION, "Sample Image Description");
+        imageUri = getContentResolver().insert (MediaStore.Images. Media.EXTERNAL_CONTENT_URI, values);
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        cameraActivityResultLauncher.launch(intent);
+    }
+
+    private ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            //used to handle result of camera intent
+                            //get uri of image
+                            if (result.getResultCode() == Activity.RESULT_OK){
+                                Intent data = result.getData(); //no need here as in camera case we already have image in imageUri variable
+                                binding.ivPerson.setImageURI(imageUri);
+                            }else {
+                                Toast.makeText(Profile_SinhVien_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+    );
+
+    private ActivityResultLauncher<Intent> galleryActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    //used to handle result of camera intent
+                    //get uri of image
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        imageUri = data.getData();
+                        binding.ivPerson.setImageURI(imageUri);
+                    }else {
+                        Toast.makeText(Profile_SinhVien_Activity.this, "Cancle", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+    );
+
 
     private void loadUserInfo() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -127,8 +263,9 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
 
                         Glide.with(Profile_SinhVien_Activity.this)
                                 .load(profileImage)
-                                .placeholder(R.drawable.ic_baseline_person_24)
+                                .placeholder(R.drawable.ic_person)
                                 .into(binding.ivPerson);
+
                     }
 
                     @Override
@@ -139,7 +276,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         progressDialog.dismiss();
     }
 
-    private void updateUserInfo(){
+    private void updateUserInfo(String imageUri){
         progressDialog.setMessage("Đang cập nhật thông tin cá nhân...");
         progressDialog.show();
 
@@ -155,6 +292,9 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         hashMap.put("dob", dob);
         hashMap.put("nganh", nganh);
         hashMap.put("khoa", khoa);
+        if(imageUri != null){
+            hashMap.put("profileImage",""+imageUri);
+        }
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(firebaseAuth.getUid())

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nguyenvanhoa.app_th_android.Activity.LoginActivity;
 import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityGiangVienBinding;
 
@@ -78,6 +79,11 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.ttcanhan:
                 startActivity(new Intent(getApplicationContext(), Profile_GiangVien_Activity.class));
+                break;
+            case R.id.nav_exit:
+                firebaseAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
                 break;
             default:
                 break;
