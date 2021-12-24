@@ -122,7 +122,7 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
         tvLinhVucDT.setText(model.getLinhvuc());
         tvCNDT.setText(model.getTenCNDT());
         tvSVTG.setText(model.getTenTV());
-        tvTGTH.setText(model.getTgThucHien());
+        tvTGTH.setText(model.getTgThucHien() + " (Tuần)");
         dialog.show();
     }
 }

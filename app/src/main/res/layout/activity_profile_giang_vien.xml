@@ -18,18 +18,24 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0">
 
-    <ImageView
-        android:id="@+id/ivPerson"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/corers_bg"
-        android:src="@drawable/ic_person"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@color/menu_nav"
         app:layout_constraintVertical_bias="0.4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+      <ImageView
+          android:id="@+id/ivPerson"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:src="@drawable/ic_person" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvName"
@@ -41,10 +47,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/ivPerson"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,7 +176,7 @@
         android:gravity="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="Cập Nhật Thông Tin"
+        android:text="Chỉnh sử thông tin"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/white"

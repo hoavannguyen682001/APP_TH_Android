@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/custom_dialog_thongtindk"
     android:orientation="vertical"
-    android:layout_width="400dp"
+    android:layout_width="390dp"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -158,11 +158,11 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_linear"
             android:padding="8dp"
-            android:layout_marginRight="10dp"
             android:text="Duyệt đề tài"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:layout_marginRight="10dp"
             android:textAlignment="center" />
 
         <TextView
@@ -172,6 +172,7 @@
             android:background="@drawable/bg_linear"
             android:padding="8dp"
             android:text="Huỷ"
+            android:layout_marginLeft="6dp"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"

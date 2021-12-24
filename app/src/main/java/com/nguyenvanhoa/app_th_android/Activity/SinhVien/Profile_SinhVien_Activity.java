@@ -58,6 +58,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private Uri imageUri = null;
+    private int check = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,8 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait...");
         progressDialog.setCanceledOnTouchOutside(false);
+
+        checkEnableEdt();
 
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -104,13 +107,44 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         binding.tvUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateData();
-                progressDialog.setMessage("Đang tải lại dữ liệu");
-                progressDialog.show();
-                loadUserInfo();
+
+                switch (check){
+                    case 1:{
+                        binding.tvUpdate.setText("Cập nhật thông tin");
+                        binding.edtLop.setEnabled(true);
+                        binding.edtGioiTinh.setEnabled(true);
+                        binding.edtNgaySinh.setEnabled(true);
+                        binding.edtNganh.setEnabled(true);
+                        binding.edtKhoa.setEnabled(true);
+                        binding.ivPerson.setEnabled(true);
+                        check = 2;
+                    }
+                    break;
+                    case 2:{
+                        validateData();
+                        progressDialog.setMessage("Đang tải lại dữ liệu");
+                        progressDialog.show();
+                        binding.tvUpdate.setText("Chỉnh sử thông tin");
+                        check = 1;
+                    }
+                    break;
+                    default:{
+
+                    }break;
+                }
             }
         });
 
+    }
+
+    private void checkEnableEdt(){
+        binding.edtEmail.setEnabled(false);
+        binding.edtLop.setEnabled(false);
+        binding.edtGioiTinh.setEnabled(false);
+        binding.edtNgaySinh.setEnabled(false);
+        binding.edtNganh.setEnabled(false);
+        binding.edtKhoa.setEnabled(false);
+        binding.ivPerson.setEnabled(false);
     }
 
     private void validateData() {
@@ -276,7 +310,7 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         progressDialog.dismiss();
     }
 
-    private void updateUserInfo(String imageUri){
+    private void updateUserInfo(String imageUrl){
         progressDialog.setMessage("Đang cập nhật thông tin cá nhân...");
         progressDialog.show();
 
@@ -292,8 +326,9 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
         hashMap.put("dob", dob);
         hashMap.put("nganh", nganh);
         hashMap.put("khoa", khoa);
+
         if(imageUri != null){
-            hashMap.put("profileImage",""+imageUri);
+            hashMap.put("profileImage",""+imageUrl);
         }
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -304,6 +339,8 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         progressDialog.dismiss();
                         Toast.makeText(Profile_SinhVien_Activity.this, "Cập nhật thông tin thành công...", Toast.LENGTH_SHORT).show();
+                        checkEnableEdt();
+                        loadUserInfo();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

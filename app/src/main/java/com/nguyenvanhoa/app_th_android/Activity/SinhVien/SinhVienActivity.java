@@ -39,7 +39,6 @@ import java.util.Calendar;
 public class SinhVienActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView tvName,tvEmail;
-    private ListView lvTB;
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
 
@@ -112,7 +111,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         return true;
     }
 
-    private ArrayList setArrayList(){
+    private ArrayList<ThongBao> setArrayList(){
         arrayList = new ArrayList<>();
 
         arrayList.add(new ThongBao("12/11 2021","Thông báo bảo vệ đề tài NCKH"));
