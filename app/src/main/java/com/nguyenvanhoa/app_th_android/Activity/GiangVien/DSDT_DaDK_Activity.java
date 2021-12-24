@@ -3,15 +3,20 @@ package com.nguyenvanhoa.app_th_android.Activity.GiangVien;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +29,7 @@ import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityDsdtDaDkBinding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DSDT_DaDK_Activity extends AppCompatActivity {
 
@@ -62,6 +68,13 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
 
             }
         });
+        binding.lvTTDT.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TTDeTai model = arrayList.get(i);
+                dialogCustom(model);
+            }
+        });
     }
 
     private void loadDanhSachDT() {
@@ -91,5 +104,25 @@ public class DSDT_DaDK_Activity extends AppCompatActivity {
             }
         });
     }
+    private void dialogCustom(TTDeTai model){
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_custom_ttdetai_dk);
+        dialog.setCanceledOnTouchOutside(false);
 
+        TextView tvTenDT, tvLinhVucDT, tvCNDT, tvSVTG, tvTGTH;
+
+        tvTenDT = dialog.findViewById(R.id.tvTenDT);
+        tvLinhVucDT = dialog.findViewById(R.id.tvLinhVucDT);
+        tvCNDT = dialog.findViewById(R.id.tvCNDT);
+        tvSVTG = dialog.findViewById(R.id.tvSinhVienTG);
+        tvTGTH = dialog.findViewById(R.id.tvTGTH);
+
+        tvTenDT.setText(model.getTenDT());
+        tvLinhVucDT.setText(model.getLinhvuc());
+        tvCNDT.setText(model.getTenCNDT());
+        tvSVTG.setText(model.getTenTV());
+        tvTGTH.setText(model.getTgThucHien());
+        dialog.show();
+    }
 }
