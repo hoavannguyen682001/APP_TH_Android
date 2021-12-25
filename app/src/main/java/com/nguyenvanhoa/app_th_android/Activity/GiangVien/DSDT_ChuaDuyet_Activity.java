@@ -152,11 +152,13 @@ public class DSDT_ChuaDuyet_Activity extends AppCompatActivity {
                             public void onSuccess(Void unused) {
                                 Toast.makeText(DSDT_ChuaDuyet_Activity.this, "Đã duyệt đề tài "+ model.getTenDT(), Toast.LENGTH_SHORT).show();
                                 adapter.notifyDataSetChanged();
+                                dialog.dismiss();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                dialog.dismiss();
                                 Toast.makeText(DSDT_ChuaDuyet_Activity.this, "Duyệt đề tài không thành công ", Toast.LENGTH_SHORT).show();
                             }
                         });

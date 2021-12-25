@@ -33,9 +33,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="1.0">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout1"
@@ -90,7 +90,7 @@
                 app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtTenDT"
-                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintVertical_bias="0.1"
                 app:layout_constraintWidth_percent="0.9" />
 
             <EditText
@@ -197,7 +197,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
-            android:layout_height="250dp"
+            android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:padding="5dp"
             android:background="@drawable/bg_constraint"
@@ -206,6 +206,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
             app:layout_constraintVertical_bias="0"
+            app:layout_constraintHeight_percent="0.35"
             app:layout_constraintWidth_percent="0.9">
 
             <TextView
@@ -220,7 +221,7 @@
                 app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.03"
+                app:layout_constraintVertical_bias="0.01"
                 app:layout_constraintWidth_percent="0.9" />
 
             <EditText
@@ -232,7 +233,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv4"
-                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintVertical_bias="0.01"
                 app:layout_constraintWidth_percent="0.95" />
 
             <TextView
@@ -275,7 +276,7 @@
                 app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtThoiGian"
-                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintVertical_bias="0.1"
                 app:layout_constraintWidth_percent="0.9" />
 
             <EditText

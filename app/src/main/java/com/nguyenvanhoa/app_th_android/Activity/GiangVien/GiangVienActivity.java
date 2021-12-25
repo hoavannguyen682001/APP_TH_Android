@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nguyenvanhoa.app_th_android.Activity.LoginActivity;
+import com.nguyenvanhoa.app_th_android.Activity.SinhVien.SinhVienActivity;
 import com.nguyenvanhoa.app_th_android.Adapter.ThongBao_Adapter;
 import com.nguyenvanhoa.app_th_android.Model.ThongBao;
 import com.nguyenvanhoa.app_th_android.R;
@@ -35,6 +38,7 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
     private FirebaseAuth firebaseAuth;
     private TextView tvName, tvEmail;
     private View header;
+    private ImageView ivPerson;
 
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
@@ -59,6 +63,7 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
         header =  binding.navigationView.getHeaderView(0);
         tvName = header.findViewById(R.id.tvName);
         tvEmail = header.findViewById(R.id.tvEmail);
+        ivPerson = header.findViewById(R.id.ivPersonGV);
 
         adapter = new ThongBao_Adapter(this, R.layout.row_listview_thongbao,setArrayList());
         binding.lvTB.setAdapter(adapter);
@@ -124,9 +129,14 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String email = "" + snapshot.child("email").getValue();
                         String name = "" + snapshot.child("name").getValue();
-
+                        String profileImage = "" + snapshot.child("profileImage").getValue();
                         tvEmail.setText(email);
                         tvName.setText(name);
+
+                        Glide.with(GiangVienActivity.this)
+                                .load(profileImage)
+                                .placeholder(R.drawable.ic_person)
+                                .into(ivPerson);
                     }
 
                     @Override
