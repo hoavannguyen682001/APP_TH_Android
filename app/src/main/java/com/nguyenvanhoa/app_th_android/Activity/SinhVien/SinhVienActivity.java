@@ -60,7 +60,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         firebaseAuth = FirebaseAuth.getInstance();
 
         //navigation crawler
-        binding.navigationView.bringToFront();
+//        binding.navigationView.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout,binding.toobar,R.string.mo,R.string.dong);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();

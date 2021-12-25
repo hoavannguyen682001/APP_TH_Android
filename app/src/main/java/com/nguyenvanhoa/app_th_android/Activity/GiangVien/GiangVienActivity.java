@@ -53,7 +53,7 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        binding.navigationView.bringToFront();
+//        binding.navigationView.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout,binding.toobar,R.string.mo,R.string.dong);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
