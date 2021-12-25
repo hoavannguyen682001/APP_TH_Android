@@ -15,9 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +41,7 @@ import java.util.Calendar;
 public class SinhVienActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView tvName,tvEmail;
+    private ImageView ivPerson;
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
 
@@ -57,7 +60,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         firebaseAuth = FirebaseAuth.getInstance();
 
         //navigation crawler
-        binding.navigationView.bringToFront();
+//        binding.navigationView.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this, binding.drawerLayout,binding.toobar,R.string.mo,R.string.dong);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -67,6 +70,7 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
         header =  binding.navigationView.getHeaderView(0);
         tvName = header.findViewById(R.id.tvName);
         tvEmail = header.findViewById(R.id.tvEmail);
+        ivPerson = header.findViewById(R.id.ivPersonSV);
 
         loadUserInfo();
 
@@ -133,9 +137,14 @@ public class SinhVienActivity extends AppCompatActivity implements NavigationVie
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String email = "" + snapshot.child("email").getValue();
                         String name = "" + snapshot.child("name").getValue();
-
+                        String profileImage = "" + snapshot.child("profileImage").getValue();
                         tvEmail.setText(email);
                         tvName.setText(name);
+
+                        Glide.with(SinhVienActivity.this)
+                                .load(profileImage)
+                                .placeholder(R.drawable.ic_person)
+                                .into(ivPerson);
                     }
 
                     @Override

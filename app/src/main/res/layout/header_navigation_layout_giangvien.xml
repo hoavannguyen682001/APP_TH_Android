@@ -2,18 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="bottom"
     android:background="@color/menu_nav">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/corers_bg"
-        android:src="@drawable/ic_person" />
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/menu_nav">
+        <ImageView
+            android:id="@+id/ivPersonGV"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_person" />
+    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"

@@ -20,8 +20,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nguyenvanhoa.app_th_android.R;
 import com.nguyenvanhoa.app_th_android.databinding.ActivityDangKyDeTaiBinding;
 
@@ -51,9 +54,9 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
         progressDialog.setTitle("Please wait...");
         progressDialog.setCanceledOnTouchOutside(false);
 
+        loadTTDeTai();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         calendar = Calendar.getInstance();
-
 
         binding.btnDangKyDT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +128,25 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                         Toast.makeText(DangKyDeTai_Activity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
 
+    }
+    private void loadTTDeTai() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
+        ref.child(firebaseAuth.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String id = "" + snapshot.child("id").getValue();
+                        if(id != null){
+                            check = true;
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
 
 }
