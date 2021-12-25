@@ -79,6 +79,14 @@ public class DSDT_ChuaDuyet_Activity extends AppCompatActivity {
                 dialogCustom(model);
             }
         });
+
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void loadDSDT_ChuaDuyet() {

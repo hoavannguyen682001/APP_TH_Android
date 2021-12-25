@@ -135,6 +135,13 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
             }
         });
 
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
     }
 
     private void checkEnableEdt(){

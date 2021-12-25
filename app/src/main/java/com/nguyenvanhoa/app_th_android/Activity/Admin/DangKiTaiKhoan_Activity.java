@@ -51,7 +51,19 @@ public class DangKiTaiKhoan_Activity extends AppCompatActivity {
                 validateData();
             }
         });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     String fullName = "", email = "", password = "", confirmPass = "";
     private void validateData() {
 

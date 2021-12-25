@@ -68,6 +68,12 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                 }
             }
         });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     String tenDT="", linhvuc="", tenCNDT="", tenTV="", tenGV="", tgThucHien="", tgDK="";
