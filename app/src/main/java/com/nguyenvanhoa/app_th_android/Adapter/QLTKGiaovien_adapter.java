@@ -72,7 +72,7 @@ public class QLTKGiaovien_adapter extends BaseAdapter implements Filterable {
             holder.tvMK = (TextView) view.findViewById(R.id.tvMK);
             holder.tvTenGV = (TextView) view.findViewById(R.id.tvTenGV);
             holder.ibDelete = (ImageButton) view.findViewById(R.id.ibDelete);
-            holder.ibEdit = (ImageButton) view.findViewById(R.id.ibEdit);
+
 
             view.setTag(holder);
         }else{
@@ -116,12 +116,6 @@ public class QLTKGiaovien_adapter extends BaseAdapter implements Filterable {
                             }
                         })
                         .show();
-            }
-        });
-        holder.ibEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
             }
         });
         return view;

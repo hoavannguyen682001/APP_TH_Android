@@ -54,7 +54,7 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
         progressDialog.setTitle("Please wait...");
         progressDialog.setCanceledOnTouchOutside(false);
 
-        loadTTDeTai();
+//        loadTTDeTai();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         calendar = Calendar.getInstance();
 
@@ -74,6 +74,12 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), SinhVienActivity.class));
     }
 
     String tenDT="", linhvuc="", tenCNDT="", tenTV="", tenGV="", tgThucHien="", tgDK="";
@@ -123,8 +129,6 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(DangKyDeTai_Activity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                         check = true;
-                        Intent intent = new Intent(getApplicationContext(), ThongTinDeTai_Activity.class);
-                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -136,23 +140,23 @@ public class DangKyDeTai_Activity extends AppCompatActivity {
                 });
 
     }
-    private void loadTTDeTai() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
-        ref.child(firebaseAuth.getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String id = "" + snapshot.child("id").getValue();
-                        if(id != null){
-                            check = true;
-                        }
-
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
+//    private void loadTTDeTai() {
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
+//        ref.child(firebaseAuth.getUid())
+//                .addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        String id = "" + snapshot.child("id").getValue();
+//                        if(id != null){
+//                            check = true;
+//                        }
+//
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//    }
 
 }

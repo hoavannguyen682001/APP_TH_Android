@@ -96,13 +96,13 @@
             android:orientation="horizontal"
             android:gravity="right">
 
-            <ImageButton
-                android:id="@+id/ibEditSV"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                app:backgroundTint="@null"
-                android:background="@color/white"
-                android:src="@drawable/ic_edit"/>
+<!--            <ImageButton-->
+<!--                android:id="@+id/ibEditSV"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                app:backgroundTint="@null"-->
+<!--                android:background="@color/white"-->
+<!--                android:src="@drawable/ic_edit"/>-->
 
             <ImageButton
                 android:id="@+id/ibDeleteSV"

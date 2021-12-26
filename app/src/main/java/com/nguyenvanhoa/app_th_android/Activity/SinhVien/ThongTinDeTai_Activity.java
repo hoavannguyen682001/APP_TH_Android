@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.nguyenvanhoa.app_th_android.databinding.ActivityThongTinDeTaiBinding;
 public class ThongTinDeTai_Activity extends AppCompatActivity {
 
     private ActivityThongTinDeTaiBinding binding;
-    public static String id, uid;
+    public static String uid;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -37,15 +38,16 @@ public class ThongTinDeTai_Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        uid = firebaseAuth.getUid();
         loadIDbyUID();
 
-        if(id == null){
+        if(TextUtils.isEmpty(uid)){
             Toast.makeText(ThongTinDeTai_Activity.this, "Bạn chưa đăng ký đề tài...", Toast.LENGTH_SHORT).show();
         }
         else {
             loadTTDeTai() ;
         }
+
+//        Toast.makeText(ThongTinDeTai_Activity.this, "ababa "+id, Toast.LENGTH_SHORT).show();
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +59,7 @@ public class ThongTinDeTai_Activity extends AppCompatActivity {
 
     private void loadTTDeTai() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
-        ref.child(uid)
+        ref.child(firebaseAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -82,11 +84,11 @@ public class ThongTinDeTai_Activity extends AppCompatActivity {
     }
     private void loadIDbyUID(){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DanhSachDeTai");
-        ref.child(uid)
+        ref.child(firebaseAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        id = ""+ snapshot.child("id").getValue();
+                        uid = (String) snapshot.child("uid").getValue();
                     }
 
                     @Override

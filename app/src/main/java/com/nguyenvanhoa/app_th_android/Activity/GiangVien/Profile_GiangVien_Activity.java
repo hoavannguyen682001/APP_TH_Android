@@ -120,6 +120,12 @@ public class Profile_GiangVien_Activity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), GiangVienActivity.class));
+    }
+
     private void loadDateOfBirth() {
         calendar = Calendar.getInstance();
         int ngay = calendar.get(Calendar.DATE);

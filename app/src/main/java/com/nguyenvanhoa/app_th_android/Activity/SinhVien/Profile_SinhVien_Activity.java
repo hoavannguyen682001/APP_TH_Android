@@ -144,6 +144,12 @@ public class Profile_SinhVien_Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), SinhVienActivity.class));
+    }
+
     private void checkEnableEdt(){
         binding.edtEmail.setEnabled(false);
         binding.edtLop.setEnabled(false);

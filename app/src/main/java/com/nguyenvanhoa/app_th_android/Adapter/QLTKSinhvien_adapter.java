@@ -69,7 +69,7 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
             holder.tvMKSV = (EditText) convertView.findViewById(R.id.tvMKSV);
             holder.tvTenSV = (EditText) convertView.findViewById(R.id.tvTenSV);
             holder.ibDelete = (ImageButton) convertView.findViewById(R.id.ibDeleteSV);
-            holder.ibEdit = (ImageButton) convertView.findViewById(R.id.ibEditSV);
+
 
             convertView.setTag(holder);
         }
@@ -107,11 +107,6 @@ public class QLTKSinhvien_adapter extends BaseAdapter implements Filterable {
                         }
                     })
                         .show();
-            }
-        });
-        holder.ibEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
             }
         });
 
