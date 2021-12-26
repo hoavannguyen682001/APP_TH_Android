@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,10 +40,8 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
     private TextView tvName, tvEmail;
     private View header;
     private ImageView ivPerson;
-
     private ArrayList<ThongBao> arrayList;
     private ThongBao_Adapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,6 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         binding.navigationView.setNavigationItemSelectedListener(this);
-
         //header navigation crawler
         header =  binding.navigationView.getHeaderView(0);
         tvName = header.findViewById(R.id.tvName);
@@ -67,7 +65,6 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
 
         adapter = new ThongBao_Adapter(this, R.layout.row_listview_thongbao,setArrayList());
         binding.lvTB.setAdapter(adapter);
-
         loadUserInfo();
     }
 
@@ -138,7 +135,6 @@ public class GiangVienActivity extends AppCompatActivity implements NavigationVi
                                 .placeholder(R.drawable.ic_person)
                                 .into(ivPerson);
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
