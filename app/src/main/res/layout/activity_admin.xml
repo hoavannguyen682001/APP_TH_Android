@@ -27,10 +27,22 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f1f1f1"
+            android:paddingVertical="16dp"
+            android:textColor="@color/menu_nav"
+            android:paddingLeft="24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Thông Báo Mới"/>
+
+        <ListView
+            android:id="@+id/lvTB"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/row_listview_thongbao"/>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

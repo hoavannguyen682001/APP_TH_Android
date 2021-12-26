@@ -73,14 +73,14 @@ public class DangKiTaiKhoan_Activity extends AppCompatActivity {
         fullName = binding.edtTenGv.getText().toString();
 
         //validate data
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches ()){
+        if (TextUtils.isEmpty(fullName)) {
+            Toast.makeText(this, "Nhập tên giáo viên...!", Toast.LENGTH_SHORT).show();
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches ()){
             Toast.makeText( this,  "Email không hợp lệ...!", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(password)){
             Toast.makeText( this, "Nhập mật khẩu...!", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(confirmPass)){
             Toast.makeText( this, "Xác nhận mật khẩu...!", Toast.LENGTH_SHORT).show();
-        }else if (TextUtils.isEmpty(fullName)){
-            Toast.makeText( this,  "Nhập tên của bạn...!", Toast.LENGTH_SHORT).show();
         }else if (!password.equals(confirmPass)){
             Toast.makeText( this,"Mật khẩu không khớp...!",Toast.LENGTH_SHORT).show();
         }else{
@@ -140,6 +140,7 @@ public class DangKiTaiKhoan_Activity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(DangKiTaiKhoan_Activity.this, "Tạo tài khoản thành công...!", Toast.LENGTH_SHORT).show();
                         finish();
+                        startActivity(new Intent(getApplicationContext(), QLTKGiaoVien_Activity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
